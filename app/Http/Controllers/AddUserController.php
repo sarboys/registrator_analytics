@@ -15,11 +15,10 @@ class AddUserController extends Controller
 
     use RegistersUsers;
 
-    protected $redirectTo = RouteServiceProvider::HOME;
 
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('auth');
     }
 
     protected function validator(array $data)
@@ -39,5 +38,9 @@ class AddUserController extends Controller
             'password' => Hash::make($data['password']),
             'role' => $data['role']
         ]);
+    }
+    public function index()
+    {
+        return view('adduser');
     }
 }
