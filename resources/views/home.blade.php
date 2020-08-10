@@ -2483,7 +2483,7 @@
                 <i class="symbol-badge bg-success"></i>
             </div>
             <div class="d-flex flex-column">
-                <a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">
+                <a href="{{ route('user',['id' => Auth::user()->id ]) }}" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">
                     {{ Auth::user()->name }}
                 </a>
                 @if(Auth::user()->role == '1')
