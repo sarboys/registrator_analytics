@@ -23,4 +23,4 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/partners', 'partnersController@index')->name('partners');
 Route::get('/products', 'productsController@index')->name('products');
 Route::get('/unloading', 'unloadingController@index')->name('unloading');
-Route::get('/admin/userAdd', 'userAddController@index')->name('userAdd');
+Route::get('/admin/addUser', 'addUserController@index')->name('addUser');
