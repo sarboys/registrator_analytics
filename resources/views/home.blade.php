@@ -2486,9 +2486,16 @@
                 <a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">
                     {{ Auth::user()->name }}
                 </a>
-                <div class="text-muted mt-1">
-                    Администратор
-                </div>
+                @if(Auth::user()->role == '1')
+                    <div class="text-muted mt-1">
+                        Администратор
+                    </div>
+                @endif
+                @if(Auth::user()->role == '2')
+                    <div class="text-muted mt-1">
+                        Менеджер
+                    </div>
+                @endif
                 <div class="navi mt-2">
                     <a href="#" class="navi-item">
                         <span class="navi-link p-0 pb-2">
