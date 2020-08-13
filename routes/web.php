@@ -24,6 +24,8 @@ Route::get('/partners', 'partnersController@index')->name('partners');
 Route::get('/products', 'productsController@index')->name('products');
 Route::get('/unloading', 'unloadingController@index')->name('unloading');
 
+Route::get('/portal', 'PortalController@index')->name('portal');
+
 Route::get('/user/{id}', function (\App\User $id) {
     return view('/user/user',['id' => $id]);
 })->name('user');
