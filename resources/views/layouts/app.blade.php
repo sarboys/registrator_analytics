@@ -15,13 +15,15 @@
     <link href="/assets/css/themes/layout/brand/dark.css" rel="stylesheet" type="text/css"/>
     <link href="/assets/css/themes/layout/aside/dark.css" rel="stylesheet" type="text/css"/>        <!--end::Layout Themes-->
     <link rel="shortcut icon" href="/assets/media/logos/favicon.ico"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 
 <body  id="kt_body"  class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading"  >
 @include('include.aside')
 @yield('content')
 
-<script>var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";</script>
+
 <script>
     var KTAppSettings = {
         "breakpoints": {

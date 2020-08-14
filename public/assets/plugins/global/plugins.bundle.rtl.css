@@ -6266,16 +6266,16 @@ Build date: 2019-12-19 16:51:02
   filter: brightness(105%); }
 
 /*!
- * 
+ *
  * Super simple wysiwyg editor v0.8.18
  * https://summernote.org
- * 
- * 
+ *
+ *
  * Copyright 2013- Alan Hong. and other contributors
  * summernote may be freely distributed under the MIT license.
- * 
+ *
  * Date: 2020-05-20T16:47Z
- * 
+ *
  */
 @font-face {
   font-family: "summernote";
@@ -11103,27 +11103,27 @@ button.toast-close-button {
   to {
     opacity: 0; } }
 
-.resize-triggers {
-  -webkit-animation: 1ms resizeanim;
-  animation: 1ms resizeanim;
-  visibility: hidden;
-  opacity: 0; }
+/*.resize-triggers {*/
+/*  -webkit-animation: 1ms resizeanim;*/
+/*  animation: 1ms resizeanim;*/
+/*  visibility: hidden;*/
+/*  opacity: 0; }*/
 
-.resize-triggers,
-.resize-triggers > div,
-.contract-trigger:before {
-  content: " ";
-  display: block;
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  overflow: hidden; }
+/*.resize-triggers,*/
+/*.resize-triggers > div,*/
+/*.contract-trigger:before {*/
+/*  content: " ";*/
+/*  display: block;*/
+/*  position: absolute;*/
+/*  top: 0;*/
+/*  right: 0;*/
+/*  height: 100%;*/
+/*  width: 100%;*/
+/*  overflow: hidden; }*/
 
-.resize-triggers > div {
-  background: #eee;
-  overflow: auto; }
+/*.resize-triggers > div {*/
+/*  background: #eee;*/
+/*  overflow: auto; }*/
 
 .contract-trigger:before {
   width: 200%;
