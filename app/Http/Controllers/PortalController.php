@@ -5,7 +5,7 @@ use App\Jobs\ProceddGetAllVoxi;
 use App\Jobs\ProceddGetFalseVoxi;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
-
+// Файл для информации с портала , для пропущенных звонков
 class PortalController extends Controller
 {
     public $FailVoix;
