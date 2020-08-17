@@ -1,6 +1,30 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container">
+    <form class="form col-sm-12" action="{{route('portal')}}" method="post">
+        <input type="hidden" value="{{csrf_token()}}">
+       <div class="row">
+           <div class="col-sm-4">
+               <select class="form-control col-sm-12" id="kt_select2_1" name="param">
+                   <option value="AK">74951183582</option>
+                   <option value="HI">74961182068</option>
+                   <option value="CA">74951182890</option>
+               </select>
+           </div>
+           <div class="col-sm-4">
+               <div class="">
+                   <div class='' id='kt_daterangepicker_4'>
+                       <input type='text' class="form-control" readonly  placeholder="Выберите дату время"/>
+                   </div>
+               </div>
+           </div>
+          <div class="col-sm-4">
+              <button class="btn btn-success">Применить</button>
+          </div>
+       </div>
+    </form>
+</div>
 <div class="d-flex flex-column flex-root">
     <div class="content  d-flex flex-column flex-column-fluid" id="kt_content">
 
@@ -10,7 +34,7 @@
             <div class=" container ">
                 <!--begin::Row-->
                 <div class="row">
-                    <div class="col-xl-6">
+                    <div class="col-xl-12">
                         <!--begin::Charts Widget 1-->
                         <div class="card card-custom card-stretch gutter-b">
                             <!--begin::Header-->
@@ -25,59 +49,7 @@
                                 <!--end::Title-->
 
                                 <!--begin::Toolbar-->
-                                <div class="card-toolbar">
-                                    <div class="dropdown dropdown-inline">
-                                        <a href="#" class="btn btn-clean btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="ki ki-bold-more-hor"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
-                                            <!--begin::Naviigation-->
-                                            <ul class="navi">
-                                                <li class="navi-header font-weight-bold py-5">
-                                                    <span class="font-size-lg">Add New:</span>
-                                                    <i class="flaticon2-information icon-md text-muted" data-toggle="tooltip" data-placement="right" title="Click to learn more..."></i>
-                                                </li>
-                                                <li class="navi-separator mb-3 opacity-70"></li>
-                                                <li class="navi-item">
-                                                    <a href="#" class="navi-link">
-                                                        <span class="navi-icon"><i class="flaticon2-shopping-cart-1"></i></span>
-                                                        <span class="navi-text">Order</span>
-                                                    </a>
-                                                </li>
-                                                <li class="navi-item">
-                                                    <a href="#" class="navi-link">
-                                                        <span class="navi-icon"><i class="navi-icon flaticon2-calendar-8"></i></span>
-                                                        <span class="navi-text">Members</span>
-                                                        <span class="navi-label">
-                <span class="label label-light-danger label-rounded font-weight-bold">3</span>
-            </span>
-                                                    </a>
-                                                </li>
-                                                <li class="navi-item">
-                                                    <a href="#" class="navi-link">
-                                                        <span class="navi-icon"><i class="navi-icon flaticon2-telegram-logo"></i></span>
-                                                        <span class="navi-text">Project</span>
-                                                    </a>
-                                                </li>
-                                                <li class="navi-item">
-                                                    <a href="#" class="navi-link">
-                                                        <span class="navi-icon"><i class="navi-icon flaticon2-new-email"></i></span>
-                                                        <span class="navi-text">Record</span>
-                                                        <span class="navi-label">
-                <span class="label label-light-success label-rounded font-weight-bold">5</span>
-            </span>
-                                                    </a>
-                                                </li>
-                                                <li class="navi-separator mt-3 opacity-70"></li>
-                                                <li class="navi-footer pt-5 pb-4">
-                                                    <a class="btn btn-light-primary font-weight-bolder btn-sm" href="#">More options</a>
-                                                    <a class="btn btn-clean font-weight-bold btn-sm d-none" href="#" data-toggle="tooltip" data-placement="right" title="Click to learn more...">Learn more</a>
-                                                </li>
-                                            </ul>
-                                            <!--end::Naviigation-->
-                                        </div>
-                                    </div>
-                                </div>
+
                                 <!--end::Toolbar-->
                             </div>
                             <!--end::Header-->
@@ -91,54 +63,6 @@
                             <!--end::Body-->
                         </div>
                         <!--end::Charts Widget 1-->
-                    </div>
-                    <div class="col-xl-6">
-                        <!--begin::Charts Widget 2-->
-                        <div class="card card-custom bg-gray-100 card-stretch gutter-b">
-                            <!--begin::Header-->
-                            <div class="card-header h-auto border-0">
-                                <!--begin::Title-->
-                                <div class="card-title py-5">
-                                    <h3 class="card-label">
-                                        <span class="d-block text-dark font-weight-bolder">Recent Orders</span>
-                                        <span class="d-block text-dark-50 mt-2 font-size-sm">More than 500+ new orders</span>
-                                    </h3>
-                                </div>
-                                <!--end::Title-->
-
-                                <!--begin::Toolbar-->
-                                <div class="card-toolbar">
-                                    <ul class="nav nav-pills nav-pills-sm nav-dark-75" role="tablist">
-                                        <li class="nav-item">
-                                            <a class="nav-link py-2 px-4" data-toggle="tab" href="#kt_charts_widget_2_chart_tab_1"   >
-                                                <span class="nav-text font-size-sm">Month</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link py-2 px-4" data-toggle="tab" href="#kt_charts_widget_2_chart_tab_2"   >
-                                                <span class="nav-text font-size-sm">Week</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link py-2 px-4 active" data-toggle="tab" href="#kt_charts_widget_2_chart_tab_3"   >
-                                                <span class="nav-text font-size-sm">Day</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!--end::Toolbar-->
-                            </div>
-                            <!--end::Header-->
-
-                            <!--begin::Body-->
-                            <div class="card-body">
-                                <!--begin::Chart-->
-                                <div id="kt_charts_widget_2_chart"></div>
-                                <!--end::Chart-->
-                            </div>
-                            <!--end::Body-->
-                        </div>
-                        <!--end::Charts Widget 2-->
                     </div>
                 </div>
 
