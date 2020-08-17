@@ -42,17 +42,14 @@ class PortalController extends Controller
         $res = json_decode($response,true);
         return $res['total'];
     }
-  public function index() {
-
-
-//        dd($this->AllResult);
+    public function index() {
       return view('portal')->with('response',round($this->AllResult,1));
-  }
+    }
     public function indexPost(Request $request) {
         $this->AllResult['fail'] = $this->FailVoix($request['param']);
         $this->AllResult['success'] = $this->AllVoix($request['param']);
         $this->AllResult['all'] = round($this->FailVoix($request['param']) / $this->AllVoix($request['param'])  * 100,0);
-//        dd($this->AllResult);
+        $this->AllResult['phone'] = $request['param'];
         return view('portal')->with('response',$this->AllResult);
     }
 }

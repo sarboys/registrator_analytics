@@ -7,9 +7,10 @@
         <div class="row">
            <div class="col-sm-3 pl-0">
                <select class="form-control col-sm-12" id="kt_select2_1" name="param">
-                   <option value="74951183582">74951183582</option>
-                   <option value="74961182068">74961182068</option>
-                   <option value="74951182890">74951182890</option>
+
+                   <option value="74951183582" {{$response['phone']=='74951183582' ? "selected" : ""}}>74951183582</option>
+                   <option value="74961182068" {{$response['phone']=='74961182068' ? "selected" : ""}}>74961182068</option>
+                   <option value="74951182890" {{$response['phone']=='74951182890' ? "selected" : ""}}>74951182890</option>
                </select>
            </div>
            <div class="col-sm-3">
