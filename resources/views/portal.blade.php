@@ -7,10 +7,13 @@
         <div class="row">
            <div class="col-sm-3 pl-0">
                <select class="form-control col-sm-12" id="kt_select2_1" name="param">
-
-                   <option value="74951183582" {{$response['phone']=='74951183582' ? "selected" : ""}}>74951183582</option>
-                   <option value="74961182068" {{$response['phone']=='74961182068' ? "selected" : ""}}>74961182068</option>
-                   <option value="74951182890" {{$response['phone']=='74951182890' ? "selected" : ""}}>74951182890</option>
+                   @foreach($response['allPhones'] as $phone)
+                       <option value="{{$phone['phone']}}">
+                           {{$phone['phone']}}
+                       </option>
+                   @endforeach
+{{--                   <option value="74961182068" {{$response['phone']=='74961182068' ? "selected" : ""}}>74961182068</option>--}}
+{{--                   <option value="74951182890" {{$response['phone']=='74951182890' ? "selected" : ""}}>74951182890</option>--}}
                </select>
            </div>
            <div class="col-sm-3">
@@ -32,18 +35,15 @@
 <div class="d-flex flex-column flex-root">
     <div class="content  d-flex flex-column flex-column-fluid" id="kt_content">
 
-        <!--begin::Entry-->
         <div class="d-flex flex-column-fluid">
-            <!--begin::Container-->
             <div class=" container ">
-                <!--begin::Row-->
-
-                <div class="row">
-                    <div class="col-xl-4">
-                        <!--begin::Stats Widget 25-->
-                        <div class="card card-custom bg-light-success card-stretch gutter-b">
-                            <!--begin::Body-->
-                            <div class="card-body">
+               @if(is_array($response))
+                    <div class="row">
+                        <div class="col-xl-4">
+                            <!--begin::Stats Widget 25-->
+                            <div class="card card-custom bg-light-success card-stretch gutter-b">
+                                <!--begin::Body-->
+                                <div class="card-body">
         <span class="svg-icon svg-icon-2x svg-icon-success"><!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Mail-opened.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <rect x="0" y="0" width="24" height="24"></rect>
@@ -51,18 +51,18 @@
         <path d="M3.79274528,6.57253826 L12,12.5 L20.2072547,6.57253826 C20.4311176,6.4108595 20.7436609,6.46126971 20.9053396,6.68513259 C20.9668779,6.77033951 21,6.87277228 21,6.97787787 L21,17 C21,18.1045695 20.1045695,19 19,19 L5,19 C3.8954305,19 3,18.1045695 3,17 L3,6.97787787 C3,6.70173549 3.22385763,6.47787787 3.5,6.47787787 C3.60510559,6.47787787 3.70753836,6.51099993 3.79274528,6.57253826 Z" fill="#000000"></path>
     </g>
 </svg><!--end::Svg Icon--></span>
-                                <span class="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-6 d-block">{{$response['success']}}</span>
-                                <span class="font-weight-bold text-muted  font-size-sm">Принятые</span>
+                                    <span class="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-6 d-block">{{$response['success'] ? $response['success'] : "0"}}</span>
+                                    <span class="font-weight-bold text-muted  font-size-sm">Принятые</span>
+                                </div>
+                                <!--end::Body-->
                             </div>
-                            <!--end::Body-->
+                            <!--end::Stats Widget 25-->
                         </div>
-                        <!--end::Stats Widget 25-->
-                    </div>
-                    <div class="col-xl-4">
-                        <!--begin::Stats Widget 26-->
-                        <div class="card card-custom bg-light-danger card-stretch gutter-b">
-                            <!--begin::ody-->
-                            <div class="card-body">
+                        <div class="col-xl-4">
+                            <!--begin::Stats Widget 26-->
+                            <div class="card card-custom bg-light-danger card-stretch gutter-b">
+                                <!--begin::ody-->
+                                <div class="card-body">
         <span class="svg-icon svg-icon-2x svg-icon-danger"><!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Group.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <polygon points="0 0 24 0 24 24 0 24"></polygon>
@@ -70,68 +70,34 @@
         <path d="M17.6011961,15.0006174 C21.0077043,15.0378534 23.7891749,16.7601418 23.9984937,20.4 C24.0069246,20.5466056 23.9984937,21 23.4559499,21 L19.6,21 C19.6,18.7490654 18.8562935,16.6718327 17.6011961,15.0006174 Z M0.00065168429,20.1992055 C0.388258525,15.4265159 4.26191235,13 8.98334134,13 C13.7712164,13 17.7048837,15.2931929 17.9979143,20.2 C18.0095879,20.3954741 17.9979143,21 17.2466999,21 C13.541124,21 8.03472472,21 0.727502227,21 C0.476712155,21 -0.0204617505,20.45918 0.00065168429,20.1992055 Z" fill="#000000" fill-rule="nonzero"></path>
     </g>
 </svg><!--end::Svg Icon--></span>
-                                <span class="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-6 d-block">{{$response['fail']}}</span>
-                                <span class="font-weight-bold text-muted font-size-sm">Пропущенные</span>
-                            </div>
-                            <!--end::Body-->
-                        </div>
-                        <!--end::Stats Widget 26-->
-                    </div>
-                    <div class="col-xl-4">
-                        <!--begin: Stats Widget 19-->
-                        <div class="card card-custom bg-light-danger card-stretch gutter-b">
-                            <!--begin::Body-->
-                            <div class="card-body my-3">
-                                <a href="#" class="card-title font-weight-bolder text-danger text-hover-state-dark font-size-h6 mb-4 d-block">Процент пропущенных</a>
-
-                                <div class="font-weight-bold text-muted font-size-sm"><span class="text-dark-75 font-size-h2 font-weight-bolder mr-2">{{$response['all']}} %</span></div>
-
-                                <div class="progress progress-xs mt-7 bg-success-o-60">
-                                    <div class="progress-bar bg-danger" role="progressbar" style="width: {{$response['all']}}%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <span class="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-6 d-block">{{$response['fail'] ? $response['fail'] : "0"}}</span>
+                                    <span class="font-weight-bold text-muted font-size-sm">Пропущенные</span>
                                 </div>
+                                <!--end::Body-->
                             </div>
-                            <!--end:: Body-->
+                            <!--end::Stats Widget 26-->
                         </div>
-                        <!--end: Stats:Widget 19-->
+                        <div class="col-xl-4">
+                            <!--begin: Stats Widget 19-->
+                            <div class="card card-custom bg-light-danger card-stretch gutter-b">
+                                <!--begin::Body-->
+                                <div class="card-body my-3">
+                                    <a href="#" class="card-title font-weight-bolder text-danger text-hover-state-dark font-size-h6 mb-4 d-block">Процент пропущенных</a>
+
+                                    <div class="font-weight-bold text-muted font-size-sm"><span class="text-dark-75 font-size-h2 font-weight-bolder mr-2">{{$response['all'] ? $response['all'] : '0'}} %</span></div>
+
+                                    <div class="progress progress-xs mt-7 bg-success-o-60">
+                                        <div class="progress-bar bg-danger" role="progressbar" style="width: {{$response['all'] ? $response['all'] : '0'}}%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <!--end:: Body-->
+                            </div>
+                            <!--end: Stats:Widget 19-->
+                        </div>
                     </div>
-                </div>
-{{--                <div class="row">--}}
-{{--                    <div class="col-xl-12">--}}
-{{--                        <!--begin::Charts Widget 1-->--}}
-{{--                        <div class="card card-custom card-stretch gutter-b">--}}
-{{--                            <!--begin::Header-->--}}
-{{--                            <div class="card-header h-auto border-0">--}}
-{{--                                <!--begin::Title-->--}}
-{{--                                <div class="card-title py-5">--}}
-{{--                                    <h3 class="card-label">--}}
-{{--                                        <span class="d-block text-dark font-weight-bolder">Статистика пропущенных</span>--}}
-{{--                                        <span class="d-block text-muted mt-2 font-size-sm">Выберете номер и дату</span>--}}
-{{--                                    </h3>--}}
-{{--                                </div>--}}
-{{--                                <!--end::Title-->--}}
-
-{{--                                <!--begin::Toolbar-->--}}
-
-{{--                                <!--end::Toolbar-->--}}
-{{--                            </div>--}}
-{{--                            <!--end::Header-->--}}
-
-{{--                            <!--begin::Body-->--}}
-{{--                            <div class="card-body">--}}
-{{--                                <!--begin::Chart-->--}}
-{{--                                <div id="kt_charts_widget_1_chart"></div>--}}
-{{--                                <!--end::Chart-->--}}
-{{--                            </div>--}}
-{{--                            <!--end::Body-->--}}
-{{--                        </div>--}}
-{{--                        <!--end::Charts Widget 1-->--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-
+               @endif
             </div>
-            <!--end::Container-->
         </div>
-        <!--end::Entry-->
     </div>
 </div>
 
