@@ -8,23 +8,21 @@
            <div class="col-sm-3 pl-0">
                <select class="form-control col-sm-12" id="kt_select2_1" name="param">
                    @foreach($response['allPhones'] as $phone)
-                       <option value="{{$phone['phone']}}">
+                        <option value="{{$phone['phone']}}" {{$response['phone']==$phone['phone'] ? "selected" : ""}}>
                            {{$phone['phone']}}
                        </option>
                    @endforeach
-{{--                   <option value="74961182068" {{$response['phone']=='74961182068' ? "selected" : ""}}>74961182068</option>--}}
-{{--                   <option value="74951182890" {{$response['phone']=='74951182890' ? "selected" : ""}}>74951182890</option>--}}
                </select>
            </div>
            <div class="col-sm-3">
                <div class="">
                    <div class='' id='kt_daterangepicker_4'>
-                       <input type='text' name="dateRange" class="form-control" readonly  placeholder="Выберите дату время"/>
+                       <input type='text' value="{{$response['dateRange']}}" name="dateRange" class="form-control" readonly  placeholder="Выберите дату время"/>
                    </div>
                </div>
            </div>
             <div class="col-sm-3">
-                <input type="text" name="callDuration" class="form-control" placeholder="Время телефонного звонка > секунд">
+                <input type="text" name="callDuration" value="{{$response['callDuration']==0 ? '' : $response['callDuration']}}" class="form-control" placeholder="Время телефонного звонка >секунд">
             </div>
           <div class="col-sm-3">
               <button class="btn btn-success">Применить</button>
@@ -100,7 +98,6 @@
         </div>
     </div>
 </div>
-
 
 
 
