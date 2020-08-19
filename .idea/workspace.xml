@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PortalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PortalController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/portal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,6 +132,11 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -166,7 +170,9 @@
       <workItem from="1597736785211" duration="9000" />
       <workItem from="1597767363324" duration="8443000" />
       <workItem from="1597776585144" duration="102000" />
-      <workItem from="1597780655074" duration="21000" />
+      <workItem from="1597780655074" duration="199000" />
+      <workItem from="1597827540430" duration="44000" />
+      <workItem from="1597839532300" duration="1148000" />
     </task>
     <servers />
   </component>
@@ -202,11 +208,6 @@
           <url>file://$PROJECT_DIR$/app/Models/PortalPhone.php</url>
           <line>9</line>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/portal.blade.php</url>
-          <line>1366</line>
-          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
