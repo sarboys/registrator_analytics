@@ -14,7 +14,7 @@ class CrmController extends Controller
                 'ENTITY_ID' => 207841,
                 'ENTITY_TYPE' => 'Deal'
             ),
-            'select' => array('ID','COMMENT','*','DATE_CREATE')
+            'select' => array('ID','COMMENT','*','CREATED')
         ]);
 
         $response = Http::post('https://portal.keydisk.ru/rest/896/'.env('APP_PORTAL_KEY').'/crm.activity.list', [
