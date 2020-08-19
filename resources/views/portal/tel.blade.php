@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <form class="form col-sm-12" action="{{route('portal')}}" method="post">
+    <form class="form col-sm-12" action="{{route('telh')}}" method="post">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="row">
            <div class="col-sm-3 pl-0">

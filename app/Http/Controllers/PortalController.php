@@ -53,15 +53,17 @@ class PortalController extends Controller
         $this->AllResult['all'] = round($this->FailVoix($phone,$dateFrom,$dateTo) / $this->AllVoix($phone,$dateFrom,$dateTo,$callDuration)  * 100,0);
         $this->AllResult['dateRange'] = $dateRange;
         $this->AllResult['callDuration'] = $callDuration;
-        return view('portal')->with('response',$this->AllResult);
+        return view('/portal/tel')->with('response',$this->AllResult);
     }
 
 
 
-
+//GET
     public function index() {
         return $this->AllResult('74951182890','2020-01-01T09:00+00:00','2020-12-31T18:00+00:00','0','01/01/2020 09:00 AM / 12/31/2020 18:00 PM');
     }
+
+//POST
     public function indexPost(Request $request) {
         //Делим строку с временем на массив
         $test = explode(' / ',$request['dateRange']);
