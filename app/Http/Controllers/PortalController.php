@@ -58,7 +58,7 @@ class PortalController extends Controller
 
 
     public function index(Request $request) {
-        if(!isset($request['param'])) {
+        if(!$request->has('param')) {
             return $this->AllResult('74951182890','2020-01-01T09:00+00:00','2020-12-31T18:00+00:00','0','01/01/2020 09:00 AM / 12/31/2020 18:00 PM');
         } else {
             //Делим строку с временем на массив
