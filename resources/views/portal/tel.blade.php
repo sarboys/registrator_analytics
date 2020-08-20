@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <form class="form col-sm-12" action="{{route('telh')}}" method="post">
+    <form class="form col-sm-12" action="{{route('tel')}}" method="post">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="row">
            <div class="col-sm-3 pl-0">
@@ -14,17 +14,20 @@
                    @endforeach
                </select>
            </div>
-           <div class="col-sm-3">
+           <div class="col-sm-4">
                <div class="">
-                   <div class='' id='kt_daterangepicker_4'>
+                   <div class='input-group' id='kt_daterangepicker_4'>
                        <input type='text' value="{{$response['dateRange']}}" name="dateRange" class="form-control" readonly  placeholder="Выберите дату время"/>
+                       <div class="input-group-prepend">
+                           <span class="input-group-text"><i class="la la-calendar-check-o"></i></span>
+                       </div>
                    </div>
                </div>
            </div>
-            <div class="col-sm-3">
+            <div class="col-sm-4">
                 <input type="text" name="callDuration" value="{{$response['callDuration']==0 ? '' : $response['callDuration']}}" class="form-control" placeholder="Время телефонного звонка >секунд">
             </div>
-          <div class="col-sm-3">
+          <div class="col-sm-1">
               <button class="btn btn-success">Применить</button>
           </div>
        </div>
