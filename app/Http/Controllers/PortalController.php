@@ -57,25 +57,23 @@ class PortalController extends Controller
     }
 
 
+    public function index(Request $request) {
+        if(!isset($request['param'])) {
+            return $this->AllResult('74951182890','2020-01-01T09:00+00:00','2020-12-31T18:00+00:00','0','01/01/2020 09:00 AM / 12/31/2020 18:00 PM');
+        } else {
+            //Делим строку с временем на массив
+            $test = explode(' / ',$request['dateRange']);
 
-//GET
-    public function index() {
-        return $this->AllResult('74951182890','2020-01-01T09:00+00:00','2020-12-31T18:00+00:00','0','01/01/2020 09:00 AM / 12/31/2020 18:00 PM');
-    }
+            //Убираем АМ, конвертация в 24 часа не нужна
+            $testFrom = str_replace(' AM','',$test[0]);
+            $testTo = date_create($test[1]);
 
-//POST
-    public function indexPost(Request $request) {
-        //Делим строку с временем на массив
-        $test = explode(' / ',$request['dateRange']);
+            //Конвертируем дату из РМ в 24 часа
+            $tesTo = date_format($testTo, 'Y-m-d H:i:s');
+            $tesTo = date(DATE_ISO8601, strtotime($tesTo));
 
-        //Убираем АМ, конвертация в 24 часа не нужна
-        $testFrom = str_replace(' AM','',$test[0]);
-        $testTo = date_create($test[1]);
+            return $this->AllResult($request['param'],date('c',strtotime($testFrom)),str_replace('+0000','+00:00',$tesTo),$request['callDuration'],$request['dateRange']);
+        }
 
-        //Конвертируем дату из РМ в 24 часа
-        $tesTo = date_format($testTo, 'Y-m-d H:i:s');
-        $tesTo = date(DATE_ISO8601, strtotime($tesTo));
-
-        return $this->AllResult($request['param'],date('c',strtotime($testFrom)),str_replace('+0000','+00:00',$tesTo),$request['callDuration'],$request['dateRange']);
     }
 }

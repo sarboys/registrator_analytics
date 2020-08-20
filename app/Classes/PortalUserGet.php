@@ -5,24 +5,17 @@ use Illuminate\Support\Facades\Http;
 
 class PortalUserGet
 {
-    function __construct() {
-
-    }
-    public function getUser () {
+    public function getUser ($array) {
         $response = Http::post('https://portal.keydisk.ru/rest/896/'.env('APP_PORTAL_KEY').'/user.search',        [
-            'UF_DEPARTMENT' => array(16260,6083)
+            'UF_DEPARTMENT' => $array
         ]);
         $res = json_decode($response,true);
         return $res['result'] ;
 
     }
-
-
     public function getDepartment () {
-        $response = Http::post('https://portal.keydisk.ru/rest/896/'.env('APP_PORTAL_KEY').'/department.get', [
-            'PARENT' => 16221
-        ]);
+        $response = Http::post('https://portal.keydisk.ru/API/analitics.php');
         $res = json_decode($response,true);
-        return $res;
+        return $res['DATA'];
     }
 }

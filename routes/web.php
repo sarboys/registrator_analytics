@@ -26,7 +26,6 @@ Route::get('/unloading', 'unloadingController@index')->name('unloading');
 
 
 Route::get('/portal/tel', 'PortalController@index')->name('tel');
-Route::post('/portal/tel', 'PortalController@indexPost')->name('tel');
 
 Route::get('/portal/crm', 'CrmController@index')->name('crm');
 Route::post('/portal/crm', 'CrmController@indexPost')->name('crm');

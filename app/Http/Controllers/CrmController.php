@@ -9,8 +9,8 @@ use App\Classes\PortalUserGet;
 class CrmController extends Controller
 {
     public function index() {
-//        $t = new PortalUserGet();
-//        dd($t->getUser());
+        $t = new PortalUserGet();
+        dd($t->getUser());
 //        $response = Http::post('https://portal.keydisk.ru/rest/896/'.env('APP_PORTAL_KEY').'/crm.timeline.comment.list', [
 //            'order' => array(),
 //            'filter' => array(
@@ -29,6 +29,6 @@ class CrmController extends Controller
 //            'select' => array('*')
 //        ]);
 //        $res = '1';
-        return view('/portal/crm');
+//        return view('/portal/crm');
     }
 }
