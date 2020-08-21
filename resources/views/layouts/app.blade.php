@@ -5,6 +5,7 @@
     <title>Metronic | Dashboard</title>
     <meta name="description" content="Updates and statistics"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"/>        <!--end::Fonts-->
     <link href="/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css"/>
     <link href="/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css"/>
@@ -90,6 +91,7 @@
 <script src="/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
 <script src="/assets/js/pages/widgets.js"></script>
 <script src="/assets/js/pages/crud/forms/widgets/bootstrap-daterangepicker.js"></script>
+<script src="/assets/js/pages/crud/forms/widgets/select2.js"></script>
 </body>
 </html>
 

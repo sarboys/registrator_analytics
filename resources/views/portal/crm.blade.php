@@ -13,42 +13,49 @@
                     </div>
                 </div>
             </div>
-            <span id="test" class="select2 select2-container select2-container--default select2-container--below select2-container--focus" dir="ltr" data-select2-id="9" style="width: 393.828px;"><span class="selection"><span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1" aria-disabled="false"><ul class="select2-selection__rendered"><li class="select2-selection__choice" title="Alaska" data-select2-id="615"><span class="select2-selection__choice__remove" role="presentation">×</span>Alaska</li><li class="select2-selection__choice" title="Nevada" data-select2-id="616"><span class="select2-selection__choice__remove" role="presentation">×</span>Nevada</li><li class="select2-selection__choice" title="Oregon" data-select2-id="617"><span class="select2-selection__choice__remove" role="presentation">×</span>Oregon</li><li class="select2-selection__choice" title="Washington" data-select2-id="618"><span class="select2-selection__choice__remove" role="presentation">×</span>Washington</li><li class="select2-selection__choice" title="Colorado" data-select2-id="619"><span class="select2-selection__choice__remove" role="presentation">×</span>Colorado</li><li class="select2-selection__choice" title="Montana" data-select2-id="620"><span class="select2-selection__choice__remove" role="presentation">×</span>Montana</li><li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" role="searchbox" aria-autocomplete="list" placeholder="" style="width: 0.75em;"></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+
             <div class="col-sm-4">
                 <select class="form-control selectpicker" multiple data-actions-box="true">
-                    <option>Mustard</option>
-                    <option>Ketchup</option>
-                    <option>Relish</option>
-                    <option>Mayonnaise</option>
-                    <option>Barbecue Sauce</option>
-                    <option>Salad Dressing</option>
-                    <option>Tabasco</option>
-                    <option>Salsa</option>
-                    <option>Mustard</option>
-                    <option>Ketchup</option>
-                    <option>Relish</option>
-                    <option>Mayonnaise</option>
-                    <option>Barbecue Sauce</option>
-                    <option>Salad Dressing</option>
-                    <option>Tabasco</option>
-                    <option>Salsa</option>
-                    <option>Mustard</option>
-                    <option>Ketchup</option>
-                    <option>Relish</option>
-                    <option>Mayonnaise</option>
-                    <option>Barbecue Sauce</option>
-                    <option>Salad Dressing</option>
-                    <option>Tabasco</option>
-                    <option>Salsa</option>
+                    @foreach($response[0] as $dep)
+                        <option value="{{$dep['ID']}}">{{$dep['NAME']}}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="col-sm-4">
+                <select class="form-control select2" id="kt_select2_3" name="param" multiple="multiple">
+                    <optgroup label="Сотрудники">
+                        @foreach($response[1] as $people)
+                            <option value="{{$people['portal_id']}}">{{$people['name']}}</option>
+                        @endforeach
+                    </optgroup>
+
                 </select>
             </div>
         </div>
     </form>
 </div>
+
 <script>
     $("select").change(function(){
-        if($(this).val() == 0) return false;
-        alert($(this).val());
+        var arr = $(this).val();
+        console.log(arr);
+        $.ajax({
+            url : "{{route('crm')}}",
+            type : "post",
+            data : {
+                data : arr
+            },
+            headers: {
+                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function (data) {
+                // $('.select2-selection__rendered').empty();
+                // $(data).each(function( index, element ) {
+                //     $( "<li class=\"select2-selection__choice\" title=\"Alaska\" data-select2-id=\""+element['ID']+"\"> <span class=\"select2-selection__choice__remove\" role=\"presentation\">×</span>"+element['NAME']+' '+element['LAST_NAME']+"</li>" ).appendTo( ".select2-selection__rendered" );
+                // });
+            }
+        });
     });
 </script>
 @endsection

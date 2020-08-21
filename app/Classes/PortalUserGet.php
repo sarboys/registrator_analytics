@@ -2,14 +2,17 @@
 
 namespace App\Classes;
 use Illuminate\Support\Facades\Http;
-
+use App\Models\PortalPhone;
 class PortalUserGet
 {
     public function getUser ($array) {
         $response = Http::post('https://portal.keydisk.ru/rest/896/'.env('APP_PORTAL_KEY').'/user.search',        [
-            'UF_DEPARTMENT' => $array
+            'UF_DEPARTMENT' => $array,
+            'ACTIVE'=>'Y'
         ]);
         $res = json_decode($response,true);
+
+
         return $res['result'] ;
 
     }

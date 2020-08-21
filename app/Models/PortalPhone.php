@@ -7,4 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class PortalPhone extends Model
 {
     //
+    /**
+     * @var mixed|string
+     */
+
 }
