@@ -2,10 +2,10 @@
 
 @section('content')
 <div class="container">
-    <form class="col-sm-12">
+    <form class="col-sm-12" type="GET">
         <input type="hidden" value="{{csrf_token()}}">
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <div class='input-group' id='kt_daterangepicker_2'>
                     <input type='text' class="form-control" readonly  placeholder="Выберите даты"/>
                     <div class="input-group-append">
@@ -14,23 +14,35 @@
                 </div>
             </div>
 
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <select class="form-control selectpicker" multiple data-actions-box="true">
-                    @foreach($response[0] as $dep)
+                    @foreach($response['dep'] as $dep)
                         <option value="{{$dep['ID']}}">{{$dep['NAME']}}</option>
                     @endforeach
                 </select>
             </div>
 
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <select class="form-control select2" id="kt_select2_3" name="param" multiple="multiple">
                     <optgroup label="Сотрудники">
-                        @foreach($response[1] as $people)
+                        @foreach($response['people'] as $people)
                             <option value="{{$people['portal_id']}}">{{$people['name']}}</option>
                         @endforeach
                     </optgroup>
 
                 </select>
+            </div>
+            <div class="col-sm-2">
+                <select class="form-control col-sm-12" id="kt_select2_1" name="param">
+                    @foreach($response['category'] as $cat)
+                        <option value="{{$cat['ID']}}">
+                            {{$cat['NAME']}}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-sm-1">
+                <button class="btn btn-success">Применить</button>
             </div>
         </div>
     </form>

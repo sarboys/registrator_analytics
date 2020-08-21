@@ -21,4 +21,14 @@ class PortalUserGet
         $res = json_decode($response,true);
         return $res['DATA'];
     }
+
+    public function getCategoryList() {
+        $response = Http::post('https://portal.keydisk.ru/rest/896/'.env('APP_PORTAL_KEY').'/crm.dealcategory.list',        [
+            'order' => array(),
+            'filter' => array("ID" => array(5,13)),
+            'sort' => array("ID", "NAME", "SORT")
+        ]);
+        $res = json_decode($response,true);
+        return $res['result'] ;
+    }
 }
