@@ -61,9 +61,11 @@ class PortalController extends Controller
     public function index(Request $request) {
         if(!$request->has('param')) {
             //Записываем в кеш
-            return $this->AllResult('74951182890','2020-01-01T09:00+00:00','2020-12-31T18:00+00:00','0','01/01/2020 09:00 AM / 12/31/2020 18:00 PM');
-
-
+            if (Cache::has('tel')) {
+                return $this->AllResult(Cache::get('tel'),Cache::get('dateFrom'),Cache::get('dateTo'),Cache::get('callDuration'),Cache::get('dateRange'));
+            } else {
+                return $this->AllResult('74951182890','2020-01-01T09:00+00:00','2020-12-31T18:00+00:00','0','01/01/2020 09:00 AM / 12/31/2020 18:00 PM');
+            }
         } else {
             //Делим строку с временем на массив
             $test = explode(' / ',$request['dateRange']);
