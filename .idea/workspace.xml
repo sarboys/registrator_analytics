@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="c5dc2560-a9de-4f01-b09c-e8aba1f350b8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PortalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PortalController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CrmController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CrmController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/pages/crud/ktdatatable/base/data-local.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/pages/crud/ktdatatable/base/data-local.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/portal/crm.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/crm.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,11 +157,19 @@
       <recent name="C:\Users\79999\PhpstormProjects\laravel\registrator_analytics\resources\views\portal" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="PHP Script.PortalController.php">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
+    <configuration name="PortalController.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/app/Http/Controllers/PortalController.php">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHP Script.PortalController.php" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -178,7 +189,8 @@
       <workItem from="1597839532300" duration="15518000" />
       <workItem from="1597910720496" duration="15219000" />
       <workItem from="1597998734268" duration="47000" />
-      <workItem from="1598002379210" duration="14177000" />
+      <workItem from="1598002379210" duration="19419000" />
+      <workItem from="1598268099468" duration="10148000" />
     </task>
     <servers />
   </component>
@@ -216,15 +228,15 @@
       <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state x="427" y="193" width="587" height="534" key="find.popup/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1597930350219" />
-    <state x="377" y="211" key="run.anything.popup" timestamp="1598020908654">
+    <state x="377" y="211" key="run.anything.popup" timestamp="1598277556388">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state x="377" y="211" key="run.anything.popup/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1598020908654" />
+    <state x="377" y="211" key="run.anything.popup/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1598277556388" />
     <state x="377" y="211" key="run.anything.popup/0.0.1440.920@0.0.1440.920" timestamp="1597855460360" />
-    <state x="383" y="195" width="672" height="678" key="search.everywhere.popup" timestamp="1597855246986">
+    <state x="383" y="195" width="672" height="678" key="search.everywhere.popup" timestamp="1598021962523">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state x="383" y="195" width="672" height="678" key="search.everywhere.popup/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1597678625043" />
+    <state x="383" y="195" width="672" height="678" key="search.everywhere.popup/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1598021962523" />
     <state x="383" y="195" width="672" height="678" key="search.everywhere.popup/0.0.1440.920@0.0.1440.920" timestamp="1597855246986" />
   </component>
   <component name="XDebuggerManager">

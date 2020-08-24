@@ -92,6 +92,6 @@
 <script src="/assets/js/pages/widgets.js"></script>
 <script src="/assets/js/pages/crud/forms/widgets/bootstrap-daterangepicker.js"></script>
 <script src="/assets/js/pages/crud/forms/widgets/select2.js"></script>
-</body>
+
 </html>
 
