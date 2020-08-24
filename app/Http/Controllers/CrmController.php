@@ -17,8 +17,8 @@ class CrmController extends Controller
             'filter' => array(
                     'ASSIGNED_BY_ID' => $people,
                     'CATEGORY_ID' => $category,
-                    ">=CALL_START_DATE" => $dateFrom,
-                    "<=CALL_START_DATE" => $dateTo,
+                    ">=DATE_CREATE" => $dateFrom,
+                    "<=DATE_CREATE" => $dateTo,
                 ),
                 'select' => array('*','UF_CRM_1555936928'),
             ]);
@@ -31,10 +31,16 @@ class CrmController extends Controller
         $PortalDepartment = new PortalDepartment;
 
         if($request->has('dateRange')) {
-            $request['depPeople'] = explode(',',$request['depPeople']);
+            if(empty($request['depPeople'])) {
+                $request['depPeople'] = $request['people'];
+            } else {
+                $request['depPeople'] = explode(',',$request['depPeople']);
+            }
             $request['dateRange'] = explode(' / ', $request['dateRange']);
-            $this->dealResult =$this->getDeal($request['dateRange'][0],$request['dateRange'][1],$request['category'],$request['depPeople']);
-//            dd();
+            $x[0] = $request['dateRange'][0].'T00:00+00:00';
+            $x[1] = $request['dateRange'][1].'T00:00+00:00';
+//            dd($request);
+            $this->dealResult =$this->getDeal($x[0],$x[1],$request['category'],$request['depPeople']);
             return view('/portal/crm')->with('response',['deal'=> json_encode($this->dealResult['result']),'dep'=>$PortalUserGet->getDepartment(),'people'=>$PortalDepartment::all(),'category' => $PortalUserGet->getCategoryList()]);
         }
         else {
@@ -45,7 +51,33 @@ class CrmController extends Controller
     }
     public function getUser (Request $request) {
         $getUserByID = new PortalUserGet();
-        return $getUserByID->getUser($request['data']);
+        if($request->has('csv')) {
+            function array_to_csv_download($array, $filename = "export.csv", $delimiter=";") {
+                // open raw memory as file so no temp files needed, you might run out of memory though
+                $f = fopen('php://memory', 'w');
+                // loop over the input array
+                foreach ($array as $line) {
+                    // generate csv lines from the inner arrays
+                    fputcsv($f, $line, $delimiter);
+                }
+                // reset the file pointer to the start of the file
+                fseek($f, 0);
+                // tell the browser it's going to be a csv file
+                header('Content-Type: application/csv');
+                // tell the browser we want to save it instead of displaying it
+                header('Content-Disposition: attachment; filename="'.$filename.'";');
+                // make php send the generated csv lines to the browser
+                fpassthru($f);
+            }
+            return array_to_csv_download(
+                json_decode($request['csv']),
+                "numbers.csv"
+            );
+
+        } else {
+            return $getUserByID->getUser($request['data']);
+        }
+
     }
 }
 
