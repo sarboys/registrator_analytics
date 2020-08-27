@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\PortalPhone;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use App\Classes\PortalUserGet;
 use App\Models\PortalDepartment;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\StreamedResponse;
+
 class CrmController extends Controller
 {
     public $dealResult;
@@ -29,7 +33,24 @@ class CrmController extends Controller
 
         $PortalUserGet = new PortalUserGet();
         $PortalDepartment = new PortalDepartment;
+        if($request->has('csv')) {
+//              dd(json_decode(Cache::get('deal')));
+            function createCSV () {
+                $list = json_decode(Cache::get('deal'),true);
+                $Filename ='Level.csv';
+                header( 'Content-Type: application/csv' );
+                header('Content-Disposition: attachment; filename='.$Filename.'');
 
+                $fp =     $handle = fopen( 'php://output', 'w' );
+                fputs($fp, chr(0xEF) . chr(0xBB) . chr(0xBF)); // BOM
+                foreach ($list as $fields) {
+                    fputcsv($fp, $fields,';');
+                }
+
+                fclose($fp);
+            }
+            return createCSV();
+        }
         if($request->has('dateRange')) {
             if(empty($request['depPeople'])) {
                 $request['depPeople'] = $request['people'];
@@ -41,6 +62,9 @@ class CrmController extends Controller
             $x[1] = $request['dateRange'][1].'T00:00+00:00';
 //            dd($request);
             $this->dealResult =$this->getDeal($x[0],$x[1],$request['category'],$request['depPeople']);
+
+            Cache::put('deal' ,json_encode($this->dealResult['result']));
+
             return view('/portal/crm')->with('response',['deal'=> json_encode($this->dealResult['result']),'dep'=>$PortalUserGet->getDepartment(),'people'=>$PortalDepartment::all(),'category' => $PortalUserGet->getCategoryList()]);
         }
         else {
@@ -51,32 +75,7 @@ class CrmController extends Controller
     }
     public function getUser (Request $request) {
         $getUserByID = new PortalUserGet();
-        if($request->has('csv')) {
-            function array_to_csv_download($array, $filename = "export.csv", $delimiter=";") {
-                // open raw memory as file so no temp files needed, you might run out of memory though
-                $f = fopen('php://memory', 'w');
-                // loop over the input array
-                foreach ($array as $line) {
-                    // generate csv lines from the inner arrays
-                    fputcsv($f, $line, $delimiter);
-                }
-                // reset the file pointer to the start of the file
-                fseek($f, 0);
-                // tell the browser it's going to be a csv file
-                header('Content-Type: application/csv');
-                // tell the browser we want to save it instead of displaying it
-                header('Content-Disposition: attachment; filename="'.$filename.'";');
-                // make php send the generated csv lines to the browser
-                fpassthru($f);
-            }
-            return array_to_csv_download(
-                json_decode($request['csv']),
-                "numbers.csv"
-            );
-
-        } else {
-            return $getUserByID->getUser($request['data']);
-        }
+        return $getUserByID->getUser($request['data']);
 
     }
 }
