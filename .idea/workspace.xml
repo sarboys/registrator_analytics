@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5dc2560-a9de-4f01-b09c-e8aba1f350b8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/portal/dashboard.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CrmController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CrmController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PartnersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PartnersController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PortalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PortalController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/portal/tel.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/tel.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,11 +150,11 @@
     <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\79999\PhpstormProjects\laravel\registrator_analytics\resources\views\portal" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\79999\PhpstormProjects\laravel\registrator_analytics\app\Models" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\79999\PhpstormProjects\laravel\registrator_analytics\resources\views\portal" />
     </key>
   </component>
   <component name="RunManager" selected="PHP Script.PortalController.php">
@@ -209,7 +209,7 @@
       <workItem from="1599057698796" duration="3807000" />
       <workItem from="1599071505819" duration="254000" />
       <workItem from="1599131041543" duration="9000" />
-      <workItem from="1599144676610" duration="325000" />
+      <workItem from="1599144676610" duration="817000" />
     </task>
     <servers />
   </component>
