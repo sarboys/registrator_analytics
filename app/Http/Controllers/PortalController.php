@@ -18,7 +18,7 @@ class PortalController extends Controller
             'order' => array(),
             'filter' => array(
                 'PORTAL_NUMBER' => $phone,
-                'CALL_TYPE' => 2,
+                'CALL_TYPE' => array(2),
                 'CALL_FAILED_CODE' => 200,
                 '>CALL_DURATION' => $callDuration,
                 ">=CALL_START_DATE" => date('c',strtotime($dateFrom)),
@@ -34,8 +34,9 @@ class PortalController extends Controller
             'order' => array(),
             'filter' => array(
                 'PORTAL_NUMBER'=>$phone,
-                'CALL_TYPE' => 2,
+                'CALL_TYPE' => array(2),
                 'CALL_FAILED_CODE' => 304,
+                '>CALL_DURATION' => 47,
                 ">=CALL_START_DATE" => date('c',strtotime($dateFrom)),
                 "<=CALL_START_DATE" => $dateTo
             ),
@@ -51,7 +52,7 @@ class PortalController extends Controller
         $this->AllResult['phone'] = $phone;
         $this->AllResult['fail'] = $this->FailVoix($phone,$dateFrom,$dateTo);
         $this->AllResult['success'] = $this->AllVoix($phone,$dateFrom,$dateTo,$callDuration);
-        $this->AllResult['all'] = round($this->FailVoix($phone,$dateFrom,$dateTo) / $this->AllVoix($phone,$dateFrom,$dateTo,$callDuration)  * 100,0);
+        $this->AllResult['all'] = round($this->FailVoix($phone,$dateFrom,$dateTo) / ($this->FailVoix($phone,$dateFrom,$dateTo) + $this->AllVoix($phone,$dateFrom,$dateTo,$callDuration))  * 100,0);
         $this->AllResult['dateRange'] = $dateRange;
         $this->AllResult['callDuration'] = $callDuration;
         return view('/portal/tel')->with('response',$this->AllResult);
@@ -64,7 +65,7 @@ class PortalController extends Controller
             if (Cache::has('tel')) {
                 return $this->AllResult(Cache::get('tel'),Cache::get('dateFrom'),Cache::get('dateTo'),Cache::get('callDuration'),Cache::get('dateRange'));
             } else {
-                return $this->AllResult('74951182890','2020-01-01T09:00+00:00','2020-12-31T18:00+00:00','0','01/01/2020 09:00 AM / 12/31/2020 18:00 PM');
+                return $this->AllResult('74951182890','2020-01-01T09:00','2020-12-31T18:00','0','01/01/2020 09:00 AM / 12/31/2020 18:00 PM');
             }
         } else {
             //Делим строку с временем на массив
@@ -82,7 +83,7 @@ class PortalController extends Controller
             //Записываем в кеш
             Cache::put('tel', $request['param']);
             Cache::put('dateFrom', date('c',strtotime($testFrom)));
-            Cache::put('dateTo', str_replace('+0000','+00:00',$tesTo));
+            Cache::put('dateTo', str_replace('+0000','+03:00',$tesTo));
             Cache::put('callDuration', $request['callDuration']);
             Cache::put('dateRange', $request['dateRange']);
 

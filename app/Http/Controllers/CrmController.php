@@ -33,24 +33,25 @@ class CrmController extends Controller
 
         $PortalUserGet = new PortalUserGet();
         $PortalDepartment = new PortalDepartment;
+
+//      Создания SCV на основания полученных сделок
         if($request->has('csv')) {
-//              dd(json_decode(Cache::get('deal')));
             function createCSV () {
                 $list = json_decode(Cache::get('deal'),true);
                 $Filename ='Level.csv';
                 header( 'Content-Type: application/csv' );
                 header('Content-Disposition: attachment; filename='.$Filename.'');
-
                 $fp =     $handle = fopen( 'php://output', 'w' );
                 fputs($fp, chr(0xEF) . chr(0xBB) . chr(0xBF)); // BOM
                 foreach ($list as $fields) {
                     fputcsv($fp, $fields,';');
                 }
-
                 fclose($fp);
             }
             return createCSV();
         }
+
+
         if($request->has('dateRange')) {
             if(empty($request['depPeople'])) {
                 $request['depPeople'] = $request['people'];
