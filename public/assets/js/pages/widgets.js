@@ -2995,56 +2995,7 @@ var KTWidgets = function () {
         chart.render();
     }
 
-    var _initMixedWidget14 = function () {
-        var element = document.getElementById("kt_mixed_widget_14_chart");
-        var height = parseInt(KTUtil.css(element, 'height'));
 
-        if (!element) {
-            return;
-        }
-
-        var options = {
-            series: [74],
-            chart: {
-                height: height,
-                type: 'radialBar',
-            },
-            plotOptions: {
-                radialBar: {
-                    hollow: {
-                        margin: 0,
-                        size: "65%"
-                    },
-                    dataLabels: {
-                        showOn: "always",
-                        name: {
-                            show: false,
-                            fontWeight: '700'
-                        },
-                        value: {
-                            color: KTApp.getSettings()['colors']['gray']['gray-700'],
-                            fontSize: "30px",
-                            fontWeight: '700',
-                            offsetY: 12,
-                            show: true
-                        }
-                    },
-                    track: {
-                        background: KTApp.getSettings()['colors']['theme']['light']['success'],
-                        strokeWidth: '100%'
-                    }
-                }
-            },
-            colors: [KTApp.getSettings()['colors']['theme']['base']['success']],
-            stroke: {
-                lineCap: "round",
-            },
-            labels: ["Progress"]
-        };
-
-        var chart = new ApexCharts(element, options);
-        chart.render();
-    }
 
     var _initMixedWidget15 = function () {
         var element = document.getElementById("kt_mixed_widget_15_chart");

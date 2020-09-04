@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5dc2560-a9de-4f01-b09c-e8aba1f350b8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/portal/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PortalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PortalController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/portal/tel.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/tel.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/portal/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/dashboard.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -209,7 +209,10 @@
       <workItem from="1599057698796" duration="3807000" />
       <workItem from="1599071505819" duration="254000" />
       <workItem from="1599131041543" duration="9000" />
-      <workItem from="1599144676610" duration="817000" />
+      <workItem from="1599144676610" duration="1907000" />
+      <workItem from="1599146599740" duration="15000" />
+      <workItem from="1599146751674" duration="1122000" />
+      <workItem from="1599216313173" duration="30000" />
     </task>
     <servers />
   </component>
@@ -217,10 +220,11 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="313" y="119" key="#Deployment" timestamp="1597673367844">
-      <screen x="0" y="0" width="1440" height="920" />
+    <state x="2577" y="135" key="#Deployment" timestamp="1599146767299">
+      <screen x="2160" y="0" width="1920" height="1040" />
     </state>
     <state x="313" y="119" key="#Deployment/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1597673367844" />
+    <state x="2577" y="135" key="#Deployment/0.0.1440.920/2160.0.1920.1040@2160.0.1920.1040" timestamp="1599146767299" />
     <state x="398" y="142" key="#Options" timestamp="1597673380533">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
@@ -234,6 +238,10 @@
       <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state x="501" y="216" key="FileChooserDialogImpl/0.0.1440.920/2160.0.1920.1040@0.0.1440.920" timestamp="1597849165944" />
+    <state x="2536" y="134" key="MergeDialog" timestamp="1599146778292">
+      <screen x="2160" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2536" y="134" key="MergeDialog/0.0.1440.920/2160.0.1920.1040@2160.0.1920.1040" timestamp="1599146778292" />
     <state x="415" y="184" key="NewPhpClassDialog" timestamp="1597931183979">
       <screen x="0" y="0" width="1440" height="920" />
     </state>

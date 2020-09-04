@@ -119,11 +119,17 @@
                                 <li class="menu-item menu-item-parent" aria-haspopup="true">
                                     <span class="menu-link"><span class="menu-text">Статистика с портала</span></span>
                                 </li>
+                                <li class="menu-item {{ request()->routeIs('dashboard') ? 'menu-item-active' : '' }} " aria-haspopup="true">
+                                    <a href="{{route('dashboard')}}" class="menu-link">
+                                        <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">Dashboard</span>
+                                    </a>
+                                </li>
                                 <li class="menu-item {{ request()->routeIs('tel') ? 'menu-item-active' : '' }} " aria-haspopup="true">
                                     <a href="{{route('tel')}}" class="menu-link">
                                         <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">Телефония</span>
                                     </a>
                                 </li>
+
                                 <li class="menu-item {{ request()->routeIs('crm') ? 'menu-item-active' : '' }} " aria-haspopup="true">
                                     <a href="{{route('crm')}}" class="menu-link">
                                         <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">Сделки</span>

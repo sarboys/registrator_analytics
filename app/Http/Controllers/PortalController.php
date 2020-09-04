@@ -20,7 +20,7 @@ class PortalController extends Controller
                 'PORTAL_NUMBER' => $phone,
                 'CALL_TYPE' => 2,
                 'CALL_FAILED_CODE' => array(200,304),
-                '>CALL_DURATION' => $callDuration,
+//                '>CALL_DURATION' => $callDuration,
                 ">=CALL_START_DATE" => date('c',strtotime($dateFrom)),
                 "<=CALL_START_DATE" => $dateTo
             ),
