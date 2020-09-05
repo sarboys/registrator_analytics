@@ -63,13 +63,12 @@ class DashboardController extends Controller
 
     public function index() {
         $dashboard = new Dashboard();
-        $dashboard_average = $dashboard::avg('percent');
         return view("/portal/dashboard",[
             'response' => $dashboard::where([
                [ 'date_from' , $this->getDataWeek('last_week_monday').'T09:00'],
                [ 'date_to', $this->getDataWeek('last_week_sunday').'T18:00']
             ])->latest('percent')->get(),
-            'average' => round($dashboard_average,1)
+            'average' => round(($dashboard->sum('fail')/$dashboard->sum('all')*100),1)
         ]);
     }
 
