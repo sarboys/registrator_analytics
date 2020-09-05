@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddNewDataToPortalPhonesTable extends Migration
+class AddFieldToDashboardsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class AddNewDataToPortalPhonesTable extends Migration
      */
     public function up()
     {
-        Schema::table('portal_phones', function (Blueprint $table) {
-            $table->integer('sort');
-            $table->string('name');
+        Schema::table('dashboards', function (Blueprint $table) {
+            $table->integer('percent');
+            $table->integer('all');
+            $table->integer('fail');
         });
     }
 
@@ -26,7 +27,7 @@ class AddNewDataToPortalPhonesTable extends Migration
      */
     public function down()
     {
-        Schema::table('portal_phones', function (Blueprint $table) {
+        Schema::table('dashboards', function (Blueprint $table) {
             //
         });
     }

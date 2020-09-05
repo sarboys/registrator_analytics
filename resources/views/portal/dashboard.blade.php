@@ -33,7 +33,7 @@
 
                                     <!--begin::Title-->
                                     <div class="d-flex flex-column flex-grow-1 mr-2">
-                                        <a href="#" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1">{{$blockVal['name']}} - {{$blockKey}}</a>
+                                        <a href="#" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1">{{$blockVal['name']}} - {{$blockVal['phone']}}</a>
                                         <span class="text-muted font-weight-bold">
                                             Принятые - {{$blockVal['all']}}, Пропущенные - {{$blockVal['fail']}}
                                         </span>
@@ -41,7 +41,7 @@
                                     <!--end::Title-->
 
                                     <!--begin::Lable-->
-                                    <span class="font-weight-bolder text-success py-1 font-size-lg">{{$blockVal['percent']}}</span>
+                                    <span class="font-weight-bolder text-success py-1 font-size-lg">{{$blockVal['percent']}} %</span>
                                     <!--end::Lable-->
                                 </div>
                             @endforeach
@@ -76,7 +76,7 @@
         }
 
         var options = {
-            series: [25],
+            series: [{{$average}}],
             chart: {
                 height: height,
                 type: 'radialBar',

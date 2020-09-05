@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Dashboard;
 use App\Models\PortalPhone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -40,7 +41,7 @@ class DashboardController extends Controller
         $res = json_decode($response,true);
         return $res['total'];
     }
-    public function index() {
+    public function getData() {
         $phones = PortalPhone::orderBy('sort')->get();
         foreach ($phones as $phone) {
             $this->result[$phone->phone]['name'] = $phone->name;
@@ -52,12 +53,32 @@ class DashboardController extends Controller
                 $this->result[$phone->phone]['percent'] = 0;
             }
         }
-        return view("/portal/dashboard",[
-            'response' => $this->result
-        ]);
-//        dd($this->result);
 
+        foreach ($phones as $phone) {
+            $dashboard = new Dashboard();
+            $dashboard->name = $phone->name;
+            $dashboard->phone = $phone->phone;
+            $dashboard->date_from = '2020-08-24T09:00';
+            $dashboard->date_to = '2020-08-24T09:00';
+            $dashboard->all = $this->AllVoix($phone);;
+            $dashboard->fail = $this->FailVoix($phone);;
+            if($dashboard->fail != 0 && $dashboard->all != 0) {
+                $dashboard->percent = round($dashboard->fail / $dashboard->all  * 100,2);
+            } else {
+                $dashboard->percent = 0;
+            }
+            $dashboard->save();
+        }
+
+
+    }
+    public function index() {
+        $dashboard = new Dashboard();
+        $dashboard_average = $dashboard::avg('percent');
+        return view("/portal/dashboard",[
+            'response' => $dashboard::orderBy('percent','DESC')->get(),
+            'average' => round($dashboard_average,1)
+        ]);
     }
 
 }
-
