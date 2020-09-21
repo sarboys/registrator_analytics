@@ -20,9 +20,9 @@ use App\User;
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/partners', 'partnersController@index')->name('partners');
-Route::get('/products', 'productsController@index')->name('products');
-Route::get('/unloading', 'unloadingController@index')->name('unloading');
+Route::get('/partners', 'PartnersController@index')->name('partners');
+Route::get('/products', 'ProductsController@index')->name('products');
+Route::get('/unloading', 'UnloadingController@index')->name('unloading');
 
 
 Route::get('/portal/tel', 'PortalController@index')->name('tel');

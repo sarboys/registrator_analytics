@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Dashboard;
+use App\Models\Deal;
 use App\Models\PortalPhone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -61,14 +62,40 @@ class DashboardController extends Controller
         return $res['total'];
     }
 
+
+    public function getDeal()
+    {
+
+        $deal = new Deal();
+        $remarks = $deal::select('remark')->distinct('remark')->get();
+        foreach ($remarks as $remark) {
+            $res[$remark->remark]['off time'] = deal::where([
+                'remark' => $remark->remark,
+                'time' =>  5220
+            ])->get()->count();
+            $res[$remark->remark]['not on time'] = deal::where([
+                'remark' => $remark->remark,
+                'time' =>  5061
+            ])->get()->count();
+            $res[$remark->remark]['on time'] = deal::where([
+                'remark' => $remark->remark,
+                'time' =>  5060
+            ])->get()->count();
+        }
+        return $res;
+    }
+
+
     public function index() {
         $dashboard = new Dashboard();
-        return view("/portal/dashboard",[
+        return view("/portal/dashboard",
+            [
             'response' => $dashboard::where([
                [ 'date_from' , $this->getDataWeek('last_week_monday').'T09:00'],
                [ 'date_to', $this->getDataWeek('last_week_sunday').'T18:00']
-            ])->latest('percent')->get(),
-            'average' => round(($dashboard->sum('fail')/$dashboard->sum('all')*100),1)
+            ])->orderBy('all','desc')->get(),
+            'average' => round(($dashboard->sum('fail')/$dashboard->sum('all')*100),1),
+            'responseDeal' => $this->getDeal()
         ]);
     }
 

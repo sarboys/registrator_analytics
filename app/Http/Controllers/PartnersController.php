@@ -3,28 +3,43 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\DashboardController;
+use App\Models\Remark;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use App\Models\Deal;
+use App\Models\Dashboard;
 
 class PartnersController extends Controller
 {
     public function index()
     {
-        $response = Http::post('https://portal.keydisk.ru/rest/896/gnird2l2jwx4a07z/voximplant.statistic.get', [
-            'order' => array(),
-            'filter' => array(
-                'PORTAL_NUMBER' => '73472145122',
-                'CALL_TYPE' => 2,
-                'CALL_FAILED_CODE' => 200,
-                ">=CALL_START_DATE" => '2020-08-31T09:00',
-                "<=CALL_START_DATE" => '2020-09-04T18:00'
-            ),
-            'sort' => array()
+
+        $deal = new Deal();
+        $dashboard_get = new DashboardController();
+        $remarks = $deal::select('remark')->distinct('remark')->get();
+        foreach ($remarks as $remark) {
+            $res[$remark->remark]['off time'] = deal::where([
+                'remark' => $remark->remark,
+                'time' =>  5220
+            ])->get()->count();
+            $res[$remark->remark]['not on time'] = deal::where([
+                'remark' => $remark->remark,
+                'time' =>  5061
+            ])->get()->count();
+            $res[$remark->remark]['on time'] = deal::where([
+                'remark' => $remark->remark,
+                'time' =>  5060
+            ])->get()->count();
+        }
+        return view("/partners",[
+            'response' => $res
+
+//            $deal::where([
+//                [ 'date_from' , $this->getDataWeek('last_week_monday').'T09:00'],
+//                [ 'date_to', $this->getDataWeek('last_week_sunday').'T18:00']
+//            ])->get(),
+//            'average' => round(($dashboard->sum('fail')/$dashboard->sum('all')*100),1)
         ]);
-        $res = json_decode($response, true);
-        dd($res);
-//        return view('partners',[
-//            'response' => $res['total']
-//        ]);
     }
 }

@@ -129,7 +129,6 @@
                                         <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">Телефония</span>
                                     </a>
                                 </li>
-
                                 <li class="menu-item {{ request()->routeIs('crm') ? 'menu-item-active' : '' }} " aria-haspopup="true">
                                     <a href="{{route('crm')}}" class="menu-link">
                                         <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">Сделки</span>
