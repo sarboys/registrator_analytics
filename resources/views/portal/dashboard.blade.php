@@ -4,11 +4,12 @@
 
 <section>
     <div class="container">
+        <h5>Статистика за {{$date_from}} - {{$date_to}}</h5><br>
         <div class="row">
             <div class="col-xl-4">
                 <div class="card card-custom card-stretch gutter-b">
                     <div class="card-header border-0">
-                        <h3 class="card-title font-weight-bolder text-dark">Статистика звонков</h3>
+                        <h3 class="card-title font-weight-bolder text-dark">Статистика звонков </h3>
                     </div>
                     <div class="card-body pt-0">
                         @foreach($response as $blockKey => $blockVal)
@@ -54,14 +55,10 @@
                         <h3 class="card-title font-weight-bolder text-dark">Статистика обработки сделок</h3>
                     </div>
                     <div class="card-body pt-0">
-                        @foreach($responseDeal as $resKey => $resVal)
-                            @php
-                                $all = $resVal['on time'] + $resVal['off time'] + $resVal['not on time'];
-                                $percent = round($resVal['not on time'] / ($all - $resVal['off time']),2) * 100;
-                            @endphp
-                            @if($percent <= 10 || $percent === 0)
+                        @foreach($responseDeal as $resVal)
+                            @if($resVal['percent'] <= 10 || $resVal['percent'] === 0)
                                 @php $type = 'success' @endphp
-                            @elseif($percent >= 20)
+                            @elseif($resVal['percent'] >= 20)
                                 @php $type = 'danger' @endphp
                             @else
                                 @php $type = 'warning' @endphp
@@ -80,15 +77,15 @@
 
                                 <!--begin::Title-->
                                 <div class="d-flex flex-column flex-grow-1 mr-2">
-                                    <a href="#" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1">{{$resKey}}</a>
+                                    <a href="#" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1"> {{$resVal['name']}}</a>
                                     <span class="text-muted font-weight-bold">
-                                Общее кол-во - {{$all}} <br> on time - {{$resVal['on time']}} <br> off time - {{$resVal['off time']}}<br> not on time -{{$resVal['not on time']}}                                    </span>
+                                Общее кол-во - {{$resVal['all']}} <br> on time - {{$resVal['on_time']}} <br> off time - {{$resVal['off_time']}}<br> not on time -{{$resVal['not_on_time']}}                                    </span>
                                 </div>
                                 <!--end::Title-->
 
                                 <!--begin::Lable-->
                                 <span class="font-weight-bolder text-success py-1 font-size-lg">
-                                    {{$percent}} %
+                                    {{$resVal['percent']}} %
                                 </span>
                                 <!--end::Lable-->
                             </div>
@@ -120,7 +117,7 @@
                             <div id="kt_mixed_widget_123_chart" style="height: 200px"></div>
                         </div>
                         <div class="pt-5">
-                            <p>Тест</p>
+                            <p>Процент считается : Разница сумм общего количества и off_time делится на сумму not_on_time (умножается на 100 и округляется до целых)</p>
                         </div>
                     </div>
                 </div>
@@ -131,6 +128,7 @@
 <script>
     var _initMixedWidget14 = function () {
         var element = document.getElementById("kt_mixed_widget_14_chart");
+        var element2 = document.getElementById("kt_mixed_widget_123_chart");
         var height = parseInt(KTUtil.css(element, 'height'));
 
         if (!element) {
@@ -175,20 +173,8 @@
             },
             labels: ["Progress"]
         };
-
-        var chart = new ApexCharts(element, options);
-        chart.render();
-    }
-    var _initMixedWidget123 = function () {
-        var element = document.getElementById("kt_mixed_widget_123_chart");
-        var height = parseInt(KTUtil.css(element, 'height'));
-
-        if (!element) {
-            return;
-        }
-
-        var options = {
-            series: [{{$average}}],
+        var options2 = {
+            series: [{{$averageDeal}}],
             chart: {
                 height: height,
                 type: 'radialBar',
@@ -225,9 +211,10 @@
             },
             labels: ["Progress"]
         };
-
         var chart = new ApexCharts(element, options);
+        var chart2 = new ApexCharts(element2, options2);
         chart.render();
+        chart2.render();
     }
 </script>
 

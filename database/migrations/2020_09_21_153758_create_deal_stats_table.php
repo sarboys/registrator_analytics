@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRemarksTable extends Migration
+class CreateDealStatsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,14 @@ class CreateRemarksTable extends Migration
      */
     public function up()
     {
-        Schema::create('remarks', function (Blueprint $table) {
+        Schema::create('deal_stats', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->primary();
+            $table->string('name');
+            $table->integer('on_time');
+            $table->integer('off_time');
+            $table->integer('not_on_time');
+            $table->integer('all');
+            $table->integer('percent');
             $table->timestamps();
         });
     }
@@ -27,6 +32,6 @@ class CreateRemarksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('remarks');
+        Schema::dropIfExists('deal_stats');
     }
 }
