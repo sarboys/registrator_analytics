@@ -29,7 +29,6 @@ class DashboardController extends Controller
         } else {
             return date('Y-m-d',strtotime($NextWeekSunday));
         }
-
     }
     public function AllVoix($phone) {
         $response = Http::post('https://portal.keydisk.ru/rest/896/'.env('APP_PORTAL_KEY').'/voximplant.statistic.get', [
@@ -73,8 +72,11 @@ class DashboardController extends Controller
                [ 'date_from' , $this->getDataWeek('last_week_monday').'T09:00'],
                [ 'date_to', $this->getDataWeek('last_week_sunday').'T18:00']
             ])->orderBy('all','desc')->get(),
-            'average' => round(($dashboard->sum('fail')/$dashboard->sum('all')*100),1),
-            'responseDeal' => $deal_stats::orderBy('all','desc')->get(),
+            'average' => round(($dashboard->sum('fail')/$dashboard->sum('all'))*100,1),
+            'responseDeal' => $deal_stats::where([
+                [ 'date_from' , $this->getDataWeek('last_week_monday').'T09:00'],
+                [ 'date_to', $this->getDataWeek('last_week_sunday').'T18:00']
+            ])->orderBy('all','desc')->get(),
             'averageDeal' => round($deal_stats->sum('not_on_time') / ($deal_stats->sum('all') -  $deal_stats->sum('off_time')),1)*100,
             'date_from' => $this->getDataWeek('last_week_monday'),
             'date_to' => $this->getDataWeek('last_week_sunday')

@@ -36,7 +36,7 @@
                                 <div class="d-flex flex-column flex-grow-1 mr-2">
                                     <a href="#" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1">{{$blockVal['name']}} - {{$blockVal['phone']}}</a>
                                     <span class="text-muted font-weight-bold">
-                                        Принятые - {{$blockVal['all']}}, Пропущенные - {{$blockVal['fail']}}
+                                        Входящие - {{$blockVal['all']}}, Пропущенные - {{$blockVal['fail']}}
                                     </span>
                                 </div>
                                 <!--end::Title-->
@@ -77,9 +77,9 @@
 
                                 <!--begin::Title-->
                                 <div class="d-flex flex-column flex-grow-1 mr-2">
-                                    <a href="#" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1"> {{$resVal['name']}}</a>
-                                    <span class="text-muted font-weight-bold">
-                                Общее кол-во - {{$resVal['all']}} <br> on time - {{$resVal['on_time']}} <br> off time - {{$resVal['off_time']}}<br> not on time -{{$resVal['not_on_time']}}                                    </span>
+                                    <a href="#" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1"> {{$resVal['name']}} ({{$resVal['all']}})</a>
+{{--                                    <span class="text-muted font-weight-bold">--}}
+{{--                                Общее кол-во - {{$resVal['all']}} <br> on time - {{$resVal['on_time']}} <br> off time - {{$resVal['off_time']}}<br> not on time -{{$resVal['not_on_time']}}                                    </span>--}}
                                 </div>
                                 <!--end::Title-->
 

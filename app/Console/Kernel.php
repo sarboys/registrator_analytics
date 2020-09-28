@@ -94,6 +94,8 @@ class Kernel extends ConsoleKernel
                     foreach ($remarks as $remark) {
                         $deal_stats = new DealStats();
                         $deal_stats->name = $remark->remark;
+                        $deal_stats->date_from = $date_from;
+                        $deal_stats->date_to = $date_to;
                         $deal_stats->on_time = deal::where([
                             'remark' => $remark->remark,
                             'time' =>  5060
