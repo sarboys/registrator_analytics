@@ -77,7 +77,7 @@ class DashboardController extends Controller
                 [ 'date_from' , $this->getDataWeek('last_week_monday').'T09:00'],
                 [ 'date_to', $this->getDataWeek('last_week_sunday').'T18:00']
             ])->orderBy('all','desc')->get(),
-            'averageDeal' => round($deal_stats->sum('not_on_time') / ($deal_stats->sum('all') -  $deal_stats->sum('off_time')),1)*100,
+            'averageDeal' => round($deal_stats->sum('not_on_time') / ($deal_stats->sum('all') -  $deal_stats->sum('off_time')),3)*100,
             'date_from' => $this->getDataWeek('last_week_monday'),
             'date_to' => $this->getDataWeek('last_week_sunday')
         ]);

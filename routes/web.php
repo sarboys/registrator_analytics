@@ -21,7 +21,10 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/partners', 'PartnersController@index')->name('partners');
+
 Route::get('/products', 'ProductsController@index')->name('products');
+Route::post('/products', 'ProductsController@getJson')->name('products');
+
 Route::get('/unloading', 'UnloadingController@index')->name('unloading');
 
 

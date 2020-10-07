@@ -2,44 +2,94 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
-
+use Illuminate\Support\Facades\DB;
+use App\Models\RoAbonents;
+use App\Models\PartnerStats;
+use Carbon\Carbon;
+use DateTime;
+use App\Classes\ReplicGetDB;
 class ProductsController extends Controller
 {
-    public function getDataWeek($type) {
-        $date = Carbon::now();
-        $lastMonday = new Carbon('Last Monday'.$date);
-        $NextSunday = new Carbon('Next Sunday'.$date);
 
-        $lastWeekMonday = new Carbon('Monday last week'.$date);
-        $NextWeekSunday = new Carbon('Sunday last week'.$date);
-        if($type == 'last') {
-            return date('Y-m-d',strtotime($lastMonday));
-        } elseif ($type == 'next') {
-            return date('Y-m-d',strtotime($NextSunday));
-        } elseif ($type == 'last_week_monday') {
-            return date('Y-m-d',strtotime($lastWeekMonday));
-        } else {
-            return date('Y-m-d',strtotime($NextWeekSunday));
-        }
+    function getJson (Request $request) {
+        $PartnerStats = PartnerStats::where('year','=', $request['data'])->get();
+        return $PartnerStats;
     }
+
     public function index()
     {
-        $response = Http::post('https://portal.keydisk.ru/rest/896/'.env('APP_PORTAL_KEY').'/voximplant.statistic.get', [
-            'order' => array(),
-            'filter' => array(
-                'PORTAL_NUMBER' => '74951182068',
-                'CALL_TYPE' => 2,
-                'CALL_FAILED_CODE' => array(200,304),
-                ">=CALL_START_DATE" => $this->getDataWeek('last_week_monday').'T09:00',
-                "<=CALL_START_DATE" => $this->getDataWeek('last_week_sunday').'T18:00'
-            ),
-            'sort' => array()
-        ]);
-        $res = json_decode($response,true);
-        return $res['total'];
-        return view('products');
+
+        $ro = new RoAbonents();
+//        $test = DB::connection('pgsql')->table('ro_agent')
+//            ->join('ro_agent_region', function ($join) {
+//                $join->on('ro_agent.agent_id', '=', 'ro_agent_region.agent_id')
+//                    ->whereYear('creation_time', '2018');
+//            })
+//            ->selectRaw('COUNT(DISTINCT abonent_id) AS data, extract(month from creation_time) as month,extract(year from creation_time) as year')
+//            ->whereRaw("creation_time >  to_timestamp('2018/01/01', 'YYYY/MM/DD') AND to_timestamp('2018/12/31', 'YYYY/MM/DD') > creation_time")
+//            ->groupBy( 'month','year')
+//            ->orderByRaw('month desc,year desc')
+//            ->get();
+//select  COUNT(*) as data , extract(month from creation_time) as month from "ro_agent" where creation_time >  to_timestamp('2019/04/23', 'YYYY/MM/DD') AND to_timestamp('2020/04/23', 'YYYY/MM/DD') > creation_time GROUP BY "month" ORDER BY "month" desc
+// = 2759
+//        $re123q = DB::connection('pgsql')->table('ro_agent')
+//            ->selectRaw(" COALESCE(extract(month FROM q1.creation_time), extract(month FROM q2.off_time)) AS month,
+//    COALESCE(extract(year FROM q1.creation_time), extract(year FROM q2.off_time)) AS year,
+//    COUNT(DISTINCT q1.abonent_id) OVER (PARTITION BY to_char(q1.creation_time, 'MM.YYYY')) AS data,
+//    COUNT(DISTINCT q2.abonent_id) OVER (PARTITION BY to_char(q2.off_time, 'MM.YYYY')) AS data,
+//    q2.data_off AS data_off
+//FROM ro_agent q1
+//    FULL JOIN ro_agent q2 ON to_char(creation_time, 'MM.YYYY') = to_char(off_time, 'MM.YYYY')
+//ORDER BY month, year DESC")
+//            ->get();
+
+
+
+
+        //Посчитать количество партнеров за этот год. Ушло/Пришло
+        $req = DB::connection('pgsql')->table('ro_agent')
+            ->selectRaw('COUNT(DISTINCT abonent_id) AS data, extract(month from creation_time) as month,extract(year from creation_time) as year')
+            ->whereRaw("creation_time >  to_timestamp('2018/01/01', 'YYYY/MM/DD') AND to_timestamp('2018/12/31', 'YYYY/MM/DD') > creation_time")
+            ->groupBy( 'month','year')
+            ->orderByRaw('month desc,year desc')
+            ->get();
+
+
+        $req2 = DB::connection('pgsql')->table('ro_agent')
+            ->selectRaw('COUNT(DISTINCT abonent_id) AS data_off, extract(month from off_time) as month,extract(year from off_time) as year')
+            ->whereRaw("off_time >  to_timestamp('2018/01/01', 'YYYY/MM/DD') AND to_timestamp('2018/12/31', 'YYYY/MM/DD') > off_time")
+            ->groupBy( 'month','year')
+            ->orderByRaw('month desc,year desc')
+            ->get();
+
+        $test = array_merge_recursive( (array) $req, (array) $req2);
+//        $test = DB::connection('pgsql')->table('ro_agent')->selectRaw(DB::connection('pgsql')->table('ro_agent')->Raw("WITH q1 AS (
+
+//        "))->get();
+
+//            ->selectRaw('count(*)')
+//            ->whereColumn([
+//                ['creation_time', '>', '2018-01-01'],
+//                ['2020-12', '>', 'creation_time']
+//            ])
+//            ->selectRaw('extract(month from off_time) as month COUNT(*) as data')
+//            ->whereBetween('creation_time',array(new DateTime('2019-01-01'), new DateTime('2020-12-31')))
+//            ->whereYear('creation_time', '2020')
+//            ->whereRaw('( creation_time BETWEEN 2019-01-01 AND 2020-12-31")
+//            ->groupBy( 'month','year')
+//            ->orderBy('month')
+//            ->get();
+//        $request['on'] = $req;
+//        $request['off'] = $req_off;
+//
+//        dd($test);
+//        dd($request);
+//        $res =   $ro->select('agent_name','creation_time')->whereYear('creation_time', '2017')->whereMonth('creation_time', '09')->get();
+//        foreach ($res as $r) {
+//            echo $r->agent_name.'-'.$r->creation_time.'<br>';
+//        }
+        return view('/products',['res'=>$test]);
+
     }
 }

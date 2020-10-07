@@ -970,121 +970,7 @@ var KTWidgets = function () {
         chart.render();
     }
 
-    var _initChartsWidget2 = function () {
-        var element = document.getElementById("kt_charts_widget_2_chart");
 
-        if (!element) {
-            return;
-        }
-
-        var options = {
-            series: [{
-                name: 'Net Profit',
-                data: [44, 55, 57, 56, 61, 58]
-            }, {
-                name: 'Revenue',
-                data: [76, 85, 101, 98, 87, 105]
-            }],
-            chart: {
-                type: 'bar',
-                height: 350,
-                toolbar: {
-                    show: false
-                }
-            },
-            plotOptions: {
-                bar: {
-                    horizontal: false,
-                    columnWidth: ['30%'],
-                    endingShape: 'rounded'
-                },
-            },
-            legend: {
-                show: false
-            },
-            dataLabels: {
-                enabled: false
-            },
-            stroke: {
-                show: true,
-                width: 2,
-                colors: ['transparent']
-            },
-            xaxis: {
-                categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-                axisBorder: {
-                    show: false,
-                },
-                axisTicks: {
-                    show: false
-                },
-                labels: {
-                    style: {
-                        colors: KTApp.getSettings()['colors']['gray']['gray-500'],
-                        fontSize: '12px',
-                        fontFamily: KTApp.getSettings()['font-family']
-                    }
-                }
-            },
-            yaxis: {
-                labels: {
-                    style: {
-                        colors: KTApp.getSettings()['colors']['gray']['gray-500'],
-                        fontSize: '12px',
-                        fontFamily: KTApp.getSettings()['font-family']
-                    }
-                }
-            },
-            fill: {
-                opacity: 1
-            },
-            states: {
-                normal: {
-                    filter: {
-                        type: 'none',
-                        value: 0
-                    }
-                },
-                hover: {
-                    filter: {
-                        type: 'none',
-                        value: 0
-                    }
-                },
-                active: {
-                    allowMultipleDataPointsSelection: false,
-                    filter: {
-                        type: 'none',
-                        value: 0
-                    }
-                }
-            },
-            tooltip: {
-                style: {
-                    fontSize: '12px',
-                    fontFamily: KTApp.getSettings()['font-family']
-                },
-                y: {
-                    formatter: function (val) {
-                        return "$" + val + " thousands"
-                    }
-                }
-            },
-            colors: [KTApp.getSettings()['colors']['theme']['base']['warning'], KTApp.getSettings()['colors']['gray']['gray-300']],
-            grid: {
-                borderColor: KTApp.getSettings()['colors']['gray']['gray-200'],
-                strokeDashArray: 4,
-                yaxis: {
-                    lines: {
-                        show: true
-                    }
-                }
-            }
-        };
-
-        var chart = new ApexCharts(element, options);
-        chart.render();
-    }
 
     var _initChartsWidget3 = function () {
         var element = document.getElementById("kt_charts_widget_3_chart");
@@ -1470,34 +1356,150 @@ var KTWidgets = function () {
         chart.render();
     }
 
-    var _initChartsWidget6 = function () {
-        var element = document.getElementById("kt_charts_widget_6_chart");
-
+    var _initChartsWidget2 = function () {
+        var element = document.getElementById("kt_charts_widget_2_chart");
         if (!element) {
             return;
         }
+        var options = {
+            series: [{
+                name: 'Пришло',
+                data: [12,2,23,13,12,51,15]
+    }, {
+            name: 'Ушло',
+                data: [12,2,23,13,12,51,15]
+        }
+    , {
+            name: 'Ушло',
+                data: [12,2,2,2,15,34,11]
+        }
+    ],
+        chart: {
+            type: 'bar',
+                height: 555,
+                toolbar: {
+                show: true
+            }
+        },
+        plotOptions: {
+            bar: {
+                horizontal: false,
+                    columnWidth: ['45%'],
+                    endingShape: 'rounded'
+            },
+        },
+        legend: {
+            show: true,
+                colors: KTApp.getSettings()['colors']['gray']['gray-500'],
+        },
+        dataLabels: {
+            enabled: false,
+                colors: KTApp.getSettings()['colors']['gray']['gray-500'],
+        },
+        stroke: {
+            show: false,
+                width: 2,
+                colors: ['transparent']
+        },
+        xaxis: {
+            categories: ['Январь', 'Февраль', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+                axisBorder: {
+                show: false,
+            },
+            axisTicks: {
+                show: false
+            },
+            labels: {
+                style: {
+                    colors: KTApp.getSettings()['colors']['gray']['gray-500'],
+                        fontSize: '16',
+                        fontFamily: KTApp.getSettings()['font-family']
+                }
+            }
+        },
+        yaxis: {
+            labels: {
+                style: {
+                    colors: KTApp.getSettings()['colors']['gray']['gray-500'],
+                        fontSize: '16',
+                        fontFamily: KTApp.getSettings()['font-family']
+                }
+            }
+        },
+        fill: {
+            opacity: 1
+        },
+        states: {
+            normal: {
+                filter: {
+                    type: 'none',
+                        value: 0
+                }
+            },
+            hover: {
+                filter: {
+                    type: 'none',
+                        value: 0
+                }
+            },
+            active: {
+                allowMultipleDataPointsSelection: false,
+                    filter: {
+                    type: 'none',
+                        value: 0
+                }
+            }
+        },
+        tooltip: {
+            style: {
+                fontSize: '16px',
+                    fontFamily: KTApp.getSettings()['font-family']
+            },
+            y: {
+                formatter: function (val) {
+                    return val;
+                }
+            }
+        },
+        colors: [KTApp.getSettings()['colors']['theme']['base']['success'], KTApp.getSettings()['colors']['gray']['gray-300']],
+            grid: {
+            borderColor: KTApp.getSettings()['colors']['gray']['gray-200'],
+                strokeDashArray: 4,
+                yaxis: {
+                lines: {
+                    show: true
+                }
+            }
+        }
+    };
 
+        var chart = new ApexCharts(element, options);
+        chart.render();
+    }
+    var _initChartsWidget6 = function () {
+        var element = document.getElementById("kt_charts_widget_6_chart");
         var options = {
             series: [{
                 name: 'Net Profit',
                 type: 'bar',
                 stacked: true,
-                data: [40, 50, 65, 70, 50, 30]
+                data: [40, 50, 65, 70, 50, 30,40, 50, 65, 70, 50, 30]
             }, {
                 name: 'Revenue',
                 type: 'bar',
                 stacked: true,
-                data: [20, 20, 25, 30, 30, 20]
+                data: [40, 50, 65, 70, 50, 30,40, 50, 65, 70, 50, 30]
             }, {
                 name: 'Expenses',
-                type: 'area',
-                data: [50, 80, 60, 90, 50, 70]
+                type: 'bar',
+                stacked: true,
+                data: [40, 50, 65, 70, 50, 30,40, 50, 65, 70, 50, 30]
             }],
             chart: {
                 stacked: true,
-                height: 350,
+                height: 550,
                 toolbar: {
-                    show: false
+                    show: true
                 }
             },
             plotOptions: {
@@ -1509,10 +1511,10 @@ var KTWidgets = function () {
                 },
             },
             legend: {
-                show: false
+                show: true
             },
             dataLabels: {
-                enabled: false
+                enabled: true
             },
             stroke: {
                 curve: 'smooth',
@@ -1521,7 +1523,7 @@ var KTWidgets = function () {
                 colors: ['transparent']
             },
             xaxis: {
-                categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                categories: ['Январь', 'Февраль', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
                 axisBorder: {
                     show: false,
                 },
@@ -1537,7 +1539,7 @@ var KTWidgets = function () {
                 }
             },
             yaxis: {
-                max: 120,
+                max: 500,
                 labels: {
                     style: {
                         colors: KTApp.getSettings()['colors']['gray']['gray-500'],
@@ -1581,7 +1583,7 @@ var KTWidgets = function () {
                     }
                 }
             },
-            colors: [KTApp.getSettings()['colors']['theme']['base']['info'], KTApp.getSettings()['colors']['theme']['base']['primary'], KTApp.getSettings()['colors']['theme']['light']['primary']],
+            colors: [KTApp.getSettings()['colors']['theme']['base']['info'], KTApp.getSettings()['colors']['theme']['base']['primary'], KTApp.getSettings()['colors']['theme']['base']['success']],
             grid: {
                 borderColor: KTApp.getSettings()['colors']['gray']['gray-200'],
                 strokeDashArray: 4,
@@ -1598,11 +1600,13 @@ var KTWidgets = function () {
                 }
             }
         };
-
+        if (!element) {
+            return;
+        }
         var chart = new ApexCharts(element, options);
         chart.render();
-    }
 
+    }
     var _initChartsWidget7 = function () {
         var element = document.getElementById("kt_charts_widget_7_chart");
 
@@ -4600,7 +4604,7 @@ var KTWidgets = function () {
             _initMixedWidget5();
             _initMixedWidget6();
             _initMixedWidget13();
-            _initMixedWidget14();
+            // _initMixedWidget14();
             _initMixedWidget15();
             _initMixedWidget16();
             _initMixedWidget17();

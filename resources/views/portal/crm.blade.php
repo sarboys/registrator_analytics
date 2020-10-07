@@ -362,7 +362,7 @@
         console.log(arr);
         $.ajax({
             url : "{{route('crm')}}",
-            type : "post",
+            method : "post",
             data : {
                 data : arr
             },
