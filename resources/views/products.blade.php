@@ -21,19 +21,59 @@
 
                         <!--begin::Toolbar-->
                         <div class="card-toolbar">
+                            <div class="dropdown dropdown-inline">
+                                <a href="#" class="prd_link btn btn-light btn-sm font-size-sm font-weight-bolder dropdown-toggle text-dark-75" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Продукт
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right" style="">
+                                    <!--begin::Navigation-->
+                                    <ul class="navi navi-hover">
+                                        <li class="navi-header pb-1">
+                                            <span class="text-primary text-uppercase font-weight-bold font-size-sm">Выбор продукта:</span>
+                                        </li>
+                                        <li class="navi-item">
+                                            <a href="javascript:void()" class="select_btn navi-link" data-prd="">
+                                                <span class="navi-icon"><i class="flaticon2-shopping-cart-1"></i></span>
+                                                <span class="navi-text">Все</span>
+                                            </a>
+                                        </li>
+                                        <li class="navi-item">
+                                            <a href="javascript:void()" class="select_btn navi-link" data-prd="Партнер 1С-Отчетность">
+                                                <span class="navi-icon"><i class="flaticon2-shopping-cart-1"></i></span>
+                                                <span class="navi-text">1С-Отчетность</span>
+                                            </a>
+                                        </li>
+                                        <li class="navi-item">
+                                            <a href="javascript:void()" class="select_btn navi-link" data-prd="Партнер Астрал-Отчет">
+                                                <span class="navi-icon"><i class="flaticon2-shopping-cart-1"></i></span>
+                                                <span class="navi-text">Астрал Отчет</span>
+                                            </a>
+                                        </li>
+                                        <li class="navi-item">
+                                            <a href="javascript:void()" class="select_btn navi-link" data-prd="Партнер 1С-ЭП">
+                                                <span class="navi-icon"><i  class="flaticon2-shopping-cart-1"></i></span>
+                                                <span class="navi-text">1С-ЭП</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <!--end::Navigation-->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-toolbar">
                             <ul class="nav nav-pills nav-pills-sm nav-dark-75" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link py-2 px-4 active select_year" data-toggle="tab" data-year="2020" href="#kt_charts_widget_2_chart_tab_1"   >
+                                    <a class="nav-link py-2 px-4 active select_btn select_year " data-toggle="tab" data-year="2020" href="#kt_charts_widget_2_chart_tab_1"   >
                                         <span class="nav-text font-size-sm">2020 год</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link py-2 px-4 select_year" data-toggle="tab" data-year="2019" href="#kt_charts_widget_2_chart_tab_2"   >
+                                    <a class="nav-link py-2 px-4 select_btn select_year" data-toggle="tab" data-year="2019" href="#kt_charts_widget_2_chart_tab_2"   >
                                         <span class="nav-text font-size-sm">2019 год</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link py-2 px-4 select_year " data-toggle="tab" data-year="2018" href="#kt_charts_widget_2_chart_tab_3"   >
+                                    <a class="nav-link py-2 px-4 select_btn select_year " data-toggle="tab" data-year="2018" href="#kt_charts_widget_2_chart_tab_3"   >
                                         <span class="nav-text font-size-sm">2018 год</span>
                                     </a>
                                 </li>
@@ -79,6 +119,15 @@
 </section>
 <script>
     $(document).ready(function () {
+
+        $('.navi-link').on('click',function () {
+            $('.navi-link').removeClass('active');
+            $(this).addClass('active');
+            var text = $(this).find('.navi-text').text();
+            $('.prd_link').text(text);
+        });
+
+
         var month = ['Январь', 'Февраль','Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
         var newPartner = [];
         var fallPartner = [];
@@ -92,7 +141,8 @@
                 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
             },
             data : {
-                data : 2020
+                data : 2020,
+                data_prd : ' '
             },
             success: function (request) {
                 var month_f = month.slice(0,request.length);
@@ -179,8 +229,19 @@
                 chart2.render();
             }
         });
-        $('.select_year').on('click',function () {
-            var year = $(this).data('year');
+        $('.select_btn').on('click',function () {
+
+            if($(this).hasClass('navi-link')) {
+                var year = $('.select_year.active').data('year');
+                var prd =  $(this).data('prd');
+            }
+            if($(this).hasClass('select_year')) {
+                var year = $(this).data('year');
+                var prd =  $('.navi-link.active').data('prd');
+            }
+
+            console.log(prd);
+            console.log(year);
             $.ajax({
                 url : "{{route('products')}}",
                 method : "post",
@@ -188,7 +249,8 @@
                     'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
                 },
                 data : {
-                    data : year
+                    data : year,
+                    data_prd : prd
                 },
                 success: function (request) {
                     newPartner = [];
@@ -229,7 +291,31 @@
                 }
             });
         });
+
+        //
+        //
+        // for (var i = 0; i < test_json.length; i++) {
+        //     if (i > 0) {
+        //         test_json[i].all = test_json[i - 1].all + test_json[i].data - test_json[i].data_off;
+        //     }
+        // }
+        // console.log( test_json);
+        {{--$.ajax({--}}
+        {{--    url : "{{route('products')}}",--}}
+        {{--    method : "post",--}}
+        {{--    dataType : "json",--}}
+        {{--    headers: {--}}
+        {{--        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')--}}
+        {{--    },--}}
+        {{--    data : {--}}
+        {{--        test : test_json--}}
+        {{--    },--}}
+        {{--    success: function (data) {--}}
+        {{--        console.log(data);--}}
+        {{--    }--}}
+        {{--});--}}
     });
+
 </script>
 @endsection
 

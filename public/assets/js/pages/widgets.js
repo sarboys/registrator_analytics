@@ -4604,7 +4604,7 @@ var KTWidgets = function () {
             _initMixedWidget5();
             _initMixedWidget6();
             _initMixedWidget13();
-            // _initMixedWidget14();
+            _initMixedWidget14();
             _initMixedWidget15();
             _initMixedWidget16();
             _initMixedWidget17();

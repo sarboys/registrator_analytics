@@ -9,14 +9,32 @@ use App\Models\PartnerStats;
 use Carbon\Carbon;
 use DateTime;
 use App\Classes\ReplicGetDB;
+
 class ProductsController extends Controller
 {
 
     function getJson (Request $request) {
-        $PartnerStats = PartnerStats::where('year','=', $request['data'])->get();
+//        return $request['test'];
+//        $arr = json_decode(json_encode($request['test']) , true);
+//        foreach ($arr as $value) {
+//            $test = new PartnerStats();
+//            $test->month = $value['month'];
+//            $test->year = $value['year'];
+//            $test->data_patner = $value['data'];
+//            $test->data_off = $value['data_off'];
+//            $test->all = $value['all'];
+//            $test->product_name = '';
+//            $test->save();
+//        }
+        if(empty($request['data_prd'])) {
+            $request['data_prd'] = '';
+        }
+        $PartnerStats = PartnerStats::where([
+            ['year','=', $request['data']],
+            ['product_name','=', $request['data_prd']]
+        ])->get();
         return $PartnerStats;
     }
-
     public function index()
     {
 
