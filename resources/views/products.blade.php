@@ -46,15 +46,66 @@
                                         <li class="navi-item">
                                             <a href="javascript:void()" class="select_btn navi-link" data-prd="Партнер Астрал-Отчет">
                                                 <span class="navi-icon"><i class="flaticon2-shopping-cart-1"></i></span>
-                                                <span class="navi-text">Астрал Отчет</span>
+                                                <span class="navi-text">Астрал-Отчет</span>
                                             </a>
                                         </li>
                                         <li class="navi-item">
+                                            <a href="javascript:void()" class="select_btn navi-link" data-prd="Астрал ОФД для Агента">
+                                                <span class="navi-icon"><i class="flaticon2-shopping-cart-1"></i></span>
+                                                <span class="navi-text">Астрал ОФД</span>
+                                            </a>
+                                        </li>
+                                        <li class="navi-item">
+                                            <a href="javascript:void()" class="select_btn navi-link" data-prd="Астрал СКРИН">
+                                                <span class="navi-icon"><i class="flaticon2-shopping-cart-1"></i></span>
+                                                <span class="navi-text">Астрал СКРИН</span>
+                                            </a>
+                                        </li>
+
+                                        <li class="navi-item">
                                             <a href="javascript:void()" class="select_btn navi-link" data-prd="Партнер 1С-ЭП">
-                                                <span class="navi-icon"><i  class="flaticon2-shopping-cart-1"></i></span>
+                                                <span class="navi-icon"><i class="flaticon2-shopping-cart-1"></i></span>
                                                 <span class="navi-text">1С-ЭП</span>
                                             </a>
                                         </li>
+                                        <li class="navi-item">
+                                            <a href="javascript:void()" class="select_btn navi-link" data-prd="Партнер АО5">
+                                                <span class="navi-icon"><i class="flaticon2-shopping-cart-1"></i></span>
+                                                <span class="navi-text">АО5</span>
+                                            </a>
+                                        </li>
+                                        <li class="navi-item">
+                                            <a href="javascript:void()" class="select_btn navi-link" data-prd="Партнер АО5-ЭДО">
+                                                <span class="navi-icon"><i class="flaticon2-shopping-cart-1"></i></span>
+                                                <span class="navi-text">АО5-ЭДО</span>
+                                            </a>
+                                        </li>
+
+                                        <li class="navi-item">
+                                            <a href="javascript:void()" class="select_btn navi-link" data-prd="Партнер Астрал-ЭП">
+                                                <span class="navi-icon"><i class="flaticon2-shopping-cart-1"></i></span>
+                                                <span class="navi-text">Астрал-ЭП</span>
+                                            </a>
+                                        </li>
+                                        <li class="navi-item">
+                                            <a href="javascript:void()" class="select_btn navi-link" data-prd="Партнер Астрал.Меркурий">
+                                                <span class="navi-icon"><i class="flaticon2-shopping-cart-1"></i></span>
+                                                <span class="navi-text">Астрал.Меркурий</span>
+                                            </a>
+                                        </li>
+                                        <li class="navi-item">
+                                            <a href="javascript:void()" class="select_btn navi-link" data-prd="Партнер Астрал.Поставщик">
+                                                <span class="navi-icon"><i class="flaticon2-shopping-cart-1"></i></span>
+                                                <span class="navi-text">Астрал.Поставщик</span>
+                                            </a>
+                                        </li>
+                                        <li class="navi-item">
+                                            <a href="javascript:void()" class="select_btn navi-link" data-prd="Партнер Астрал.ЭДО">
+                                                <span class="navi-icon"><i class="flaticon2-shopping-cart-1"></i></span>
+                                                <span class="navi-text">Астрал.ЭДО</span>
+                                            </a>
+                                        </li>
+
                                     </ul>
                                     <!--end::Navigation-->
                                 </div>
@@ -119,7 +170,29 @@
 </section>
 <script>
     $(document).ready(function () {
-
+{{--        var test_json =--}}
+{{--[]--}}
+{{--        ;--}}
+{{--        for (var i = 0; i < test_json.length; i++) {--}}
+{{--            if (i > 0) {--}}
+{{--                test_json[i].all = test_json[i - 1].all + test_json[i].data - test_json[i].data_off;--}}
+{{--            }--}}
+{{--        }--}}
+{{--            console.log( test_json);--}}
+{{--            $.ajax({--}}
+{{--                url : "{{route('products')}}",--}}
+{{--                method : "post",--}}
+{{--                dataType : "json",--}}
+{{--                headers: {--}}
+{{--                    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')--}}
+{{--                },--}}
+{{--                data : {--}}
+{{--                    test : test_json--}}
+{{--                },--}}
+{{--                success: function (data) {--}}
+{{--                    console.log(data);--}}
+{{--                }--}}
+{{--        });--}}
         $('.navi-link').on('click',function () {
             $('.navi-link').removeClass('active');
             $(this).addClass('active');
@@ -292,28 +365,7 @@
             });
         });
 
-        //
-        //
-        // for (var i = 0; i < test_json.length; i++) {
-        //     if (i > 0) {
-        //         test_json[i].all = test_json[i - 1].all + test_json[i].data - test_json[i].data_off;
-        //     }
-        // }
-        // console.log( test_json);
-        {{--$.ajax({--}}
-        {{--    url : "{{route('products')}}",--}}
-        {{--    method : "post",--}}
-        {{--    dataType : "json",--}}
-        {{--    headers: {--}}
-        {{--        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')--}}
-        {{--    },--}}
-        {{--    data : {--}}
-        {{--        test : test_json--}}
-        {{--    },--}}
-        {{--    success: function (data) {--}}
-        {{--        console.log(data);--}}
-        {{--    }--}}
-        {{--});--}}
+
     });
 
 </script>

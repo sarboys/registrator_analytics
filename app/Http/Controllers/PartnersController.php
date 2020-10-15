@@ -9,11 +9,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Models\Deal;
 use App\Models\Dashboard;
-
+use App\Models\PartnerStats;
 class PartnersController extends Controller
 {
     public function index()
     {
+//        PartnerStats::where('product_name', '=', 'Партнер Астрал.ЭДО')->delete();
+//        PartnerStats::where('product_name', '=', 'Партнер 1С-Отчетность')->delete();
+//        PartnerStats::where('product_name', '=', 'Партнер Астрал-ЭП')->delete();
+
+
 
         $deal = new Deal();
         $dashboard_get = new DashboardController();

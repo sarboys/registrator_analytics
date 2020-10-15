@@ -23,7 +23,7 @@ class ProductsController extends Controller
 //            $test->data_patner = $value['data'];
 //            $test->data_off = $value['data_off'];
 //            $test->all = $value['all'];
-//            $test->product_name = '';
+//            $test->product_name = $value['name'];
 //            $test->save();
 //        }
         if(empty($request['data_prd'])) {
