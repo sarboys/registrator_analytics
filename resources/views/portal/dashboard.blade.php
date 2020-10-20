@@ -6,7 +6,7 @@
     <div class="container">
         <h5>Статистика за {{$date_from}} - {{$date_to}}</h5><br>
         <div class="row">
-            <div class="col-xl-4">
+            <div class="col-xl-5">
                 <div class="card card-custom card-stretch gutter-b">
                     <div class="card-header border-0">
                         <h3 class="card-title font-weight-bolder text-dark">Статистика звонков </h3>
@@ -57,7 +57,7 @@
                     <div class="card-body pt-0">
                         @foreach($responseDeal as $resVal)
                             @if($resVal['percent'] <= 10 || $resVal['percent'] === 0)
-                                @php $type = 'success' @endphp 
+                                @php $type = 'success' @endphp
                             @elseif($resVal['percent'] >= 20)
                                 @php $type = 'danger' @endphp
                             @else
@@ -94,7 +94,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4">
+            <div class="col-xl-3">
                 <div class="card card-custom gutter-b ">
                     <div class="card-header border-0 pt-5">
                         <h3 class="card-title font-weight-bolder ">Средний процент пропущенных, по всем ОП за прошлую неделю</h3>
@@ -125,6 +125,20 @@
         </div>
     </div>
 </section>
+@if($average <= 10 || $average === 0)
+    @php $typeColor = 'success' @endphp
+@elseif($average >= 20)
+    @php $typeColor = 'danger' @endphp
+@else
+    @php $typeColor = 'warning' @endphp
+@endif
+@if($averageDeal <= 10 || $averageDeal === 0)
+    @php $typeColor2 = 'success' @endphp
+@elseif($averageDeal >= 20)
+    @php $typeColor2 = 'danger' @endphp
+@else
+    @php $typeColor2 = 'warning' @endphp
+@endif
 <script>
     var _initMixedWidget14 = function () {
         var element = document.getElementById("kt_mixed_widget_14_chart");
@@ -162,12 +176,12 @@
                         }
                     },
                     track: {
-                        background: KTApp.getSettings()['colors']['theme']['light']['success'],
+                        background: KTApp.getSettings()['colors']['theme']['light']['{{$typeColor}}'],
                         strokeWidth: '100%'
                     }
                 }
             },
-            colors: [KTApp.getSettings()['colors']['theme']['base']['success']],
+            colors: [KTApp.getSettings()['colors']['theme']['base']['{{$typeColor}}']],
             stroke: {
                 lineCap: "round",
             },
@@ -200,12 +214,12 @@
                         }
                     },
                     track: {
-                        background: KTApp.getSettings()['colors']['theme']['light']['success'],
+                        background: KTApp.getSettings()['colors']['theme']['light']['{{$typeColor2}}'],
                         strokeWidth: '100%'
                     }
                 }
             },
-            colors: [KTApp.getSettings()['colors']['theme']['base']['success']],
+            colors: [KTApp.getSettings()['colors']['theme']['base']['{{$typeColor2}}']],
             stroke: {
                 lineCap: "round",
             },

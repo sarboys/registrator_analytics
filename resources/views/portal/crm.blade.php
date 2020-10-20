@@ -338,23 +338,7 @@
     jQuery(document).ready(function() {
         KTDatatableDataLocalDemo.init();
     });
-    {{--$(document).on('click','.csv-item',function (e) {--}}
-    {{--    console.log(dataJSONArray);--}}
-    {{--    $.ajax({--}}
-    {{--        url : "{{route('crm')}}",--}}
-    {{--        type : "post",--}}
-    {{--        data : {--}}
-    {{--            csv : dataJSONArray--}}
-    {{--        },--}}
-    {{--        headers: {--}}
-    {{--            'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')--}}
-    {{--        },--}}
-    {{--        success: function (data) {--}}
 
-    {{--        }--}}
-    {{--    });--}}
-    {{--    e.preventDefault();--}}
-    {{--});--}}
 
 
     $("select").change(function(){
